@@ -32,18 +32,13 @@
 
   <section>
     <div class="wrap">
-      <div class="support">
-        <div>
-          <p>ถ้าม็อดนี้ทำให้เล่นเกมสนุกขึ้น อยากเลี้ยงชาเขียวสักแก้วเป็นกำลังใจ ก็ขอบคุณมาก ๆ เลย 💚
-            สแกน QR ด้วยแอปธนาคาร หรือโอนตามเลขด้านล่างได้เลย</p>
-          <ul class="pay" id="payList"></ul>
-          <p class="note" id="koFiRow" hidden>อยู่ต่างประเทศ: <a id="koFiLink" href="#" target="_blank" rel="noopener">Ko-fi</a></p>
-        </div>
-        <div class="qr" id="qrBox" hidden>
-          <img id="qrImg" alt="QR พร้อมเพย์ สำหรับเลี้ยงชาเขียว">
-          <div id="qrGen" aria-label="QR พร้อมเพย์ สำหรับเลี้ยงชาเขียว"></div>
-          <p class="qr-cap">สแกนด้วยแอปธนาคาร · พร้อมเพย์</p>
-        </div>
+      <div class="support donate">
+        <p>ถ้าม็อดนี้ทำให้เล่นเกมสนุกขึ้น อยากเลี้ยงชาเขียวสักแก้วเป็นกำลังใจ ก็ขอบคุณมาก ๆ เลย 💚
+          สแกน QR ได้เลย หรือจะโอนตามเลขด้านล่างก็ได้</p>
+        <div class="qr-grid" id="qrGrid"></div>
+        <h3 class="pay-title">หรือโอนตามเลขนี้</h3>
+        <ul class="pay" id="payList"></ul>
+        <p class="note" id="koFiRow" hidden>อยู่ต่างประเทศ: <a id="koFiLink" href="#" target="_blank" rel="noopener">Ko-fi</a></p>
       </div>
       <p class="note" style="margin-top:16px">ก่อนกดโอน แอปธนาคารจะขึ้นชื่อบัญชีให้เช็กอีกครั้ง ตรวจให้ตรงกับชื่อด้านบนก่อนนะ</p>
     </div>
@@ -57,7 +52,6 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="assets/config.js"></script>
 <script src="assets/main.js"></script>
 </body>

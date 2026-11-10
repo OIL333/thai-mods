@@ -14,8 +14,11 @@ window.SITE = {
     },
   },
   donate: {
-    qrImage: "",                       // ถ้ามีรูป QR ของธนาคาร ใส่ "assets/donate-qr.png" แล้วจะใช้รูปนั้นแทน QR ที่สร้างอัตโนมัติ
-    promptpay: "0996547414",           // ใช้สร้าง QR พร้อมเพย์อัตโนมัติ (ถ้าไม่มีรูป qrImage)
+    // รูป QR จากแอปจริง (เปลี่ยนรูปได้ที่โฟลเดอร์ assets)
+    qrImages: [
+      { src: "assets/qr-promptpay.png", label: "พร้อมเพย์ / แอปธนาคาร" },
+      { src: "assets/qr-truemoney.png", label: "ทรูมันนี่วอลเล็ท" },
+    ],
     items: [
       { label: "ชื่อบัญชี", value: "กษิดิ์เดช ปทุมมาศ" },
       { label: "ธนาคารกสิกรไทย", value: "073-8-97547-2", copy: true },
