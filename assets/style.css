@@ -304,3 +304,7 @@ footer p { margin: 0; }
 .nf h1 { margin: 6px 0 10px; font-size: clamp(1.5rem, 4vw, 2rem); }
 .nf-text { color: var(--muted); margin: 0 auto 28px; max-width: 460px; }
 .nf .btns { justify-content: center; }
+
+/* theme switch animation (see main.js) */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+.theme-fade, .theme-fade * { transition: background-color .4s, color .4s, border-color .4s, fill .4s !important; }

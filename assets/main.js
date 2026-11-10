@@ -153,10 +153,27 @@
   const btn = document.getElementById("themeBtn");
   const apply = t => { if (t) document.documentElement.setAttribute("data-theme", t); else document.documentElement.removeAttribute("data-theme"); };
   try { apply(localStorage.getItem("theme")); } catch (e) {}
+  // theme switch: the new theme spreads out in a circle from the button (View Transitions);
+  // browsers without it get a quick colour cross-fade; reduced motion switches instantly
   if (btn) btn.onclick = () => {
-    const cur = document.documentElement.getAttribute("data-theme") ||
+    const root = document.documentElement;
+    const cur = root.getAttribute("data-theme") ||
       (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     const next = cur === "light" ? "dark" : "light";
-    apply(next); try { localStorage.setItem("theme", next); } catch (e) {}
+    const swap = () => {
+      apply(next); try { localStorage.setItem("theme", next); } catch (e) {}
+      if (!calm) btn.querySelectorAll("svg").forEach(s => s.animate(
+        { transform: ["rotate(-120deg) scale(.4)", "none"], opacity: [0, 1] }, { duration: 500, easing: "cubic-bezier(.3,1.4,.5,1)" }));
+    };
+    if (calm) return swap();
+    if (!document.startViewTransition) {
+      root.classList.add("theme-fade"); swap();
+      return setTimeout(() => root.classList.remove("theme-fade"), 450);
+    }
+    const r = btn.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    document.startViewTransition(swap).ready.then(() => root.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${end}px at ${x}px ${y}px)`] },
+      { duration: 600, easing: "cubic-bezier(.4,0,.2,1)", pseudoElement: "::view-transition-new(root)" })).catch(() => {});
   };
 })();
