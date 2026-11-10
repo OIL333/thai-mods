@@ -3,12 +3,12 @@ window.SITE = {
   repo: "https://github.com/OIL333/thai-mods",
   mods: {
     yohanuma: {
-      version: "1.0-beta", tag: "yohanuma-v1.0-beta", file: "Yohanuma-ThaiMod-v1.0-beta.zip",
+      version: "1.0.1-beta", tag: "yohanuma-v1.0.1-beta", file: "Yohanuma-ThaiMod-v1.0.1-beta.zip",
       name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
       store: "https://store.steampowered.com/app/2459750/",
     },
     train45: {
-      version: "1.0", tag: "train45-v1.0", file: "Train45-ThaiMod-v1.0.zip",
+      version: "1.0.1", tag: "train45-v1.0.1", file: "Train45-ThaiMod-v1.0.1.zip",
       name: "Train45",
       store: "https://store.steampowered.com/app/3711590/",
     },

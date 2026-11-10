@@ -6,8 +6,8 @@
 
 | เกม | สถานะ | ดาวน์โหลด |
 |---|---|---|
-| Yohane the Parhelion - NUMAZU in the MIRAGE - | เวอร์ชันทดสอบ (beta) | [Releases](https://github.com/OIL333/thai-mods/releases/tag/yohanuma-v1.0-beta) |
-| Train45 (18+) | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/train45-v1.0) |
+| Yohane the Parhelion - NUMAZU in the MIRAGE - | เวอร์ชันทดสอบ (beta) | [Releases](https://github.com/OIL333/thai-mods/releases/tag/yohanuma-v1.0.1-beta) |
+| Train45 (18+) | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/train45-v1.0.1) |
 
 วิธีติดตั้งอยู่ในหน้าเว็บและในไฟล์ README ที่อยู่ใน zip ของแต่ละเกม
 
