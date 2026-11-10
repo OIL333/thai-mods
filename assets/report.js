@@ -1,25 +1,50 @@
-/* Report form. With SITE.report.web3formsKey set, reports are sent by email through web3forms.com
-   (no account needed for the reporter). Without a key, "ส่งเลย" opens a prefilled GitHub issue instead. */
+/* Report / suggestion form. With SITE.report.web3formsKey set, messages are emailed through web3forms.com
+   (no account needed). Without a key, "ส่งเลย" opens a prefilled GitHub issue instead.
+   ?game=train45 preselects a game, ?type=idea opens the suggestion tab. */
 (function () {
   const $ = id => document.getElementById(id);
   const form = $("reportForm"), msg = $("msg"), sendBtn = $("sendBtn");
   const key = (SITE.report && SITE.report.web3formsKey) || "";
+  let mode = "bug";
 
-  const q = new URLSearchParams(location.search).get("game");
+  const params = new URLSearchParams(location.search);
+  const q = params.get("game");
   if (q && SITE.mods[q]) $("game").value = q;
 
-  const kind = () => (form.querySelector('input[name="kind"]:checked') || {}).value || "";
+  function setMode(m) {
+    mode = m;
+    form.querySelectorAll(".mode button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.mode === m)));
+    form.querySelectorAll(".mode-fields").forEach(f => { f.hidden = f.dataset.for !== m; });
+    show("");
+  }
+  form.querySelectorAll(".mode button").forEach(b => b.addEventListener("click", () => setMode(b.dataset.mode)));
+  if (params.get("type") === "idea") setMode("idea");
+
+  const radio = name => (form.querySelector(`input[name="${name}"]:checked`) || {}).value || "";
   const val = id => $(id).value.trim();
   const gameName = () => { const m = SITE.mods[$("game").value]; return m ? m.name : ""; };
   const gameVer = () => { const m = SITE.mods[$("game").value]; return m ? m.version : ""; };
 
   function report() {
+    if (mode === "idea") {
+      return {
+        kind: "เสนอแนะ",
+        title: `[เสนอแนะ] ${radio("topic")}${val("ideaGame") ? ": " + val("ideaGame") : ""}`.slice(0, 120),
+        fields: [
+          ["เรื่อง", radio("topic")],
+          ["เกม", val("ideaGame") || "-"],
+          ["รายละเอียด", val("idea")],
+          ["ติดต่อกลับ", val("contact") || "-"],
+        ],
+      };
+    }
     const short = $("game").value === "yohanuma" ? "Yohanuma" : gameName();
     return {
-      title: `[${short}] ${kind()}: ${val("where")}`.slice(0, 120),
+      kind: "แจ้งปัญหา",
+      title: `[${short}] ${radio("kind")}: ${val("where")}`.slice(0, 120),
       fields: [
         ["เกม", `${gameName()} (ม็อด v${gameVer()})`],
-        ["ปัญหา", kind()],
+        ["ปัญหา", radio("kind")],
         ["ตรงไหน", val("where")],
         ["ข้อความที่เห็น", val("now") || "-"],
         ["ควรเป็น", val("should") || "-"],
@@ -30,11 +55,16 @@
   }
   const asText = r => r.title + "\n\n" + r.fields.map(([k, v]) => `${k}: ${v}`).join("\n");
   const asMarkdown = r => r.fields.filter(([k]) => k !== "ติดต่อกลับ").map(([k, v]) => `**${k}:** ${v}`).join("\n\n")
-    + "\n\n_(แนบรูปได้โดยลากรูปมาวางในช่องนี้)_";
+    + (mode === "bug" ? "\n\n_(แนบรูปได้โดยลากรูปมาวางในช่องนี้)_" : "");
 
   function check() {
+    if (mode === "idea") {
+      if (!radio("topic")) return "เลือกก่อนว่าเป็นเรื่องอะไร";
+      if (!val("idea")) return "เล่ารายละเอียดหน่อยนะ";
+      return "";
+    }
     if (!$("game").value) return "เลือกเกมก่อนนะ";
-    if (!kind()) return "เลือกว่าเป็นปัญหาแบบไหนก่อนนะ";
+    if (!radio("kind")) return "เลือกว่าเป็นปัญหาแบบไหนก่อนนะ";
     if (!val("where")) return "บอกหน่อยว่าเจอตรงไหนในเกม";
     return "";
   }
@@ -58,7 +88,7 @@
     }
     sendBtn.disabled = true; show("กำลังส่ง...");
     try {
-      const body = { access_key: key, subject: "แจ้งปัญหาม็อด " + r.title, from_name: "TripleT Translate - แจ้งปัญหา",
+      const body = { access_key: key, subject: `TripleT: ${r.title}`, from_name: `TripleT Translate - ${r.kind}`,
                      botcheck: $("botcheck").checked };
       for (const [k, v] of r.fields) body[k] = v;
       const res = await fetch("https://api.web3forms.com/submit", {
@@ -66,8 +96,9 @@
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.success) throw new Error(data.message || res.status);
-      form.reset();
-      show("ส่งแล้ว ขอบคุณมาก ๆ ที่ช่วยแจ้งนะ 🙏");
+      const keepMode = mode;
+      form.reset(); setMode(keepMode);
+      show(keepMode === "idea" ? "ส่งแล้ว ขอบคุณสำหรับไอเดียนะ 💚" : "ส่งแล้ว ขอบคุณมาก ๆ ที่ช่วยแจ้งนะ 🙏");
     } catch (err) {
       show("ส่งไม่สำเร็จ ลองใหม่อีกครั้ง หรือกด \"คัดลอกข้อความ\" แล้วส่งช่องทางอื่น", true);
     } finally {
