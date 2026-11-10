@@ -5,25 +5,7 @@
     document.querySelectorAll(`[data-ver="${id}"]`).forEach(b => b.textContent = "v" + m.version);
     document.querySelectorAll(`[data-store="${id}"]`).forEach(a => { if (m.store) a.href = m.store; else a.remove(); });
   }
-  document.querySelectorAll('[data-link="issues"]').forEach(a => a.href = SITE.repo + "/issues");
 
-  const list = document.getElementById("payList");
-  if (list) {
-    for (const it of SITE.donate.items || []) {
-      const li = document.createElement("li");
-      const s = document.createElement("span"); s.textContent = it.label;
-      const b = document.createElement("b"); b.textContent = it.value;
-      li.append(s, b);
-      if (it.copy) {
-        const c = document.createElement("button"); c.className = "copy"; c.type = "button"; c.textContent = "คัดลอก";
-        c.onclick = () => { navigator.clipboard?.writeText(it.value.replace(/[^0-9]/g, "")).then(() => { c.textContent = "คัดลอกแล้ว"; setTimeout(() => c.textContent = "คัดลอก", 1500); }); };
-        b.append(c);
-      }
-      list.append(li);
-    }
-  }
-  const koFiRow = document.getElementById("koFiRow");
-  if (koFiRow && SITE.donate.koFi) { koFiRow.hidden = false; document.getElementById("koFiLink").href = SITE.donate.koFi; }
   // QR cards (SITE.donate.qrImages): same-size square QR, colored title bar, account name under it
   document.querySelectorAll("[data-account]").forEach(e => e.textContent = SITE.donate.accountName || "");
   const qrGrid = document.getElementById("qrGrid");
@@ -70,58 +52,6 @@
       fig.append(head, body, name);
       qrGrid.append(fig);
     }
-  }
-
-  // ===== in-game screenshot gallery + lightbox =====
-  const galleries = document.querySelectorAll("[data-gallery]");
-  if (galleries.length) {
-    const lb = document.createElement("div");
-    lb.className = "lightbox"; lb.setAttribute("role", "dialog"); lb.setAttribute("aria-modal", "true"); lb.hidden = true;
-    lb.innerHTML = '<button class="lb-btn lb-close" type="button" aria-label="ปิด">✕</button>' +
-      '<button class="lb-btn lb-prev" type="button" aria-label="ภาพก่อนหน้า">‹</button>' +
-      '<figure><img alt=""><figcaption></figcaption></figure>' +
-      '<button class="lb-btn lb-next" type="button" aria-label="ภาพถัดไป">›</button>';
-    document.body.append(lb);
-    const img = lb.querySelector("img"), cap = lb.querySelector("figcaption");
-    let list = [], idx = 0, lastFocus = null;
-    const show = i => {
-      idx = (i + list.length) % list.length;
-      img.src = list[idx].src; img.alt = list[idx].caption || ""; cap.textContent = list[idx].caption || "";
-      lb.querySelectorAll(".lb-prev, .lb-next").forEach(b => b.hidden = list.length < 2);
-    };
-    const open = (shots, i) => {
-      list = shots; lastFocus = document.activeElement; show(i);
-      lb.hidden = false; requestAnimationFrame(() => lb.classList.add("open"));
-      document.body.style.overflow = "hidden"; lb.querySelector(".lb-close").focus();
-    };
-    const close = () => {
-      lb.classList.remove("open"); document.body.style.overflow = "";
-      setTimeout(() => { lb.hidden = true; }, 250); if (lastFocus) lastFocus.focus();
-    };
-    lb.addEventListener("click", e => { if (e.target === lb || e.target.closest(".lb-close")) close(); });
-    lb.querySelector(".lb-prev").onclick = () => show(idx - 1);
-    lb.querySelector(".lb-next").onclick = () => show(idx + 1);
-    document.addEventListener("keydown", e => {
-      if (lb.hidden) return;
-      if (e.key === "Escape") close();
-      else if (e.key === "ArrowLeft") show(idx - 1);
-      else if (e.key === "ArrowRight") show(idx + 1);
-    });
-    galleries.forEach(box => {
-      const shots = (SITE.mods[box.dataset.gallery] || {}).shots || [];
-      if (!shots.length) { box.remove(); return; }
-      const h = document.createElement("h4"); h.textContent = "📸 ภาพจากในเกม (กดเพื่อดูภาพใหญ่)";
-      const row = document.createElement("div"); row.className = "row";
-      shots.forEach((s, i) => {
-        const b = document.createElement("button"); b.type = "button"; b.className = "thumb";
-        b.setAttribute("aria-label", "ดูภาพใหญ่: " + (s.caption || ""));
-        const t = document.createElement("img"); t.src = s.thumb || s.src; t.alt = s.caption || ""; t.loading = "lazy";
-        const c = document.createElement("span"); c.textContent = s.caption || "";
-        b.append(t, c); b.onclick = () => open(shots, i);
-        row.append(b);
-      });
-      box.append(h, row);
-    });
   }
 
   // ===== animation =====
@@ -209,7 +139,7 @@
 
   // fade things in as they scroll into view
   if (!calm && "IntersectionObserver" in window) {
-    const items = document.querySelectorAll("section h2, .ai-note, .mod, .faq details, .support, .form, .qr-card");
+    const items = document.querySelectorAll("section h2, .mod, .faq details, .support, .form, .qr-card");
     const io = new IntersectionObserver(entries => {
       for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
