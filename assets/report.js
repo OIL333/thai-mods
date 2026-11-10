@@ -48,12 +48,11 @@
         ["ตรงไหน", val("where")],
         ["ข้อความที่เห็น", val("now") || "-"],
         ["ควรเป็น", val("should") || "-"],
-        ["เล่าเพิ่ม", val("more") || "-"],
+        ["เพิ่มเติม", val("more") || "-"],
         ["ติดต่อกลับ", val("contact") || "-"],
       ],
     };
   }
-  const asText = r => r.title + "\n\n" + r.fields.map(([k, v]) => `${k}: ${v}`).join("\n");
   const asMarkdown = r => r.fields.filter(([k]) => k !== "ติดต่อกลับ").map(([k, v]) => `**${k}:** ${v}`).join("\n\n")
     + (mode === "bug" ? "\n\n_(แนบรูปได้โดยลากรูปมาวางในช่องนี้)_" : "");
 
@@ -71,12 +70,6 @@
   function show(text, err) { msg.textContent = text; msg.className = "msg" + (err ? " err" : ""); }
   const githubUrl = r => `${SITE.repo}/issues/new?title=${encodeURIComponent(r.title)}&body=${encodeURIComponent(asMarkdown(r))}`;
 
-  $("githubLink").addEventListener("click", e => {
-    const bad = check();
-    if (bad) { e.preventDefault(); return show(bad, true); }
-    e.currentTarget.href = githubUrl(report());
-  });
-  if (!key) $("githubAlt").hidden = true;   // the main button already goes to GitHub
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
@@ -100,17 +93,10 @@
       form.reset(); setMode(keepMode);
       show(keepMode === "idea" ? "ส่งแล้ว ขอบคุณสำหรับไอเดียนะ 💚" : "ส่งแล้ว ขอบคุณมาก ๆ ที่ช่วยแจ้งนะ 🙏");
     } catch (err) {
-      show("ส่งไม่สำเร็จ ลองใหม่อีกครั้ง หรือกด \"คัดลอกข้อความ\" แล้วส่งช่องทางอื่น", true);
+      show("ส่งไม่สำเร็จ ลองกดส่งอีกครั้งนะ", true);
     } finally {
       sendBtn.disabled = false;
     }
   });
 
-  $("copyBtn").addEventListener("click", () => {
-    const bad = check(); if (bad) return show(bad, true);
-    const text = asText(report());
-    (navigator.clipboard ? navigator.clipboard.writeText(text) : Promise.reject())
-      .then(() => show("คัดลอกแล้ว เอาไปวางส่งในแชทหรือคอมเมนต์ได้เลย"))
-      .catch(() => show("คัดลอกไม่ได้ ลองเลือกข้อความในช่องแล้วคัดลอกเองนะ", true));
-  });
 })();
