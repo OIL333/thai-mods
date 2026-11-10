@@ -14,16 +14,11 @@ window.SITE = {
     },
   },
   donate: {
-    // รูป QR จากแอปจริง (เปลี่ยนรูปได้ที่โฟลเดอร์ assets)
+    accountName: "กษิดิ์เดช ปทุมมาศ",
+    // รูป QR จากแอปจริง ครอปเป็นสี่เหลี่ยมจัตุรัส (เปลี่ยนรูปได้ที่โฟลเดอร์ assets)
     qrImages: [
-      { src: "assets/qr-promptpay.png", label: "พร้อมเพย์ / แอปธนาคาร" },
-      { src: "assets/qr-truemoney.png", label: "ทรูมันนี่วอลเล็ท" },
-    ],
-    items: [
-      { label: "ชื่อบัญชี", value: "กษิดิ์เดช ปทุมมาศ" },
-      { label: "ธนาคารกสิกรไทย", value: "073-8-97547-2", copy: true },
-      { label: "พร้อมเพย์", value: "099-654-7414", copy: true },
-      { label: "ทรูมันนี่วอลเล็ท", value: "099-654-7414", copy: true },
+      { src: "assets/qr-promptpay.png", label: "พร้อมเพย์", sub: "สแกนได้ทุกแอปธนาคาร", color: "#113f67" },
+      { src: "assets/qr-truemoney.png", label: "ทรูมันนี่วอลเล็ท", sub: "สแกนด้วยแอปทรูมันนี่", color: "#f47a20" },
     ],
     koFi: "",                          // เช่น "https://ko-fi.com/xxxx" (เว้นว่าง = ไม่แสดง)
   },

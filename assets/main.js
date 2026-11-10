@@ -14,7 +14,7 @@
 
   const list = document.getElementById("payList");
   if (list) {
-    for (const it of SITE.donate.items) {
+    for (const it of SITE.donate.items || []) {
       const li = document.createElement("li");
       const s = document.createElement("span"); s.textContent = it.label;
       const b = document.createElement("b"); b.textContent = it.value;
@@ -29,14 +29,20 @@
   }
   const koFiRow = document.getElementById("koFiRow");
   if (koFiRow && SITE.donate.koFi) { koFiRow.hidden = false; document.getElementById("koFiLink").href = SITE.donate.koFi; }
-  // QR images from the payment apps (SITE.donate.qrImages)
+  // QR cards (SITE.donate.qrImages): same-size square QR, colored title bar, account name under it
+  document.querySelectorAll("[data-account]").forEach(e => e.textContent = SITE.donate.accountName || "");
   const qrGrid = document.getElementById("qrGrid");
   if (qrGrid) {
     for (const q of SITE.donate.qrImages || []) {
       const fig = document.createElement("figure"); fig.className = "qr-card";
-      const img = document.createElement("img"); img.src = q.src; img.alt = "QR " + q.label; img.loading = "lazy";
-      const cap = document.createElement("figcaption"); cap.textContent = q.label;
-      fig.append(cap, img);
+      const head = document.createElement("div"); head.className = "qr-head"; head.style.background = q.color || "var(--accent)";
+      head.innerHTML = "<b></b><small></small>";
+      head.querySelector("b").textContent = q.label;
+      head.querySelector("small").textContent = q.sub || "";
+      const img = document.createElement("img"); img.src = q.src; img.alt = "QR " + q.label;
+      img.width = 600; img.height = 600; img.loading = "lazy";
+      const name = document.createElement("figcaption"); name.textContent = SITE.donate.accountName || "";
+      fig.append(head, img, name);
       qrGrid.append(fig);
     }
   }
