@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="TripleT Translate">
+  <defs>
+    <linearGradient id="tt-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4cc9f0"/>
+      <stop offset="1" stop-color="#f72585"/>
+    </linearGradient>
+  </defs>
+  <!-- speech bubble = translation -->
+  <path d="M15 5h34a11 11 0 0 1 11 11v23a11 11 0 0 1-11 11H31l-11 9v-9h-5A11 11 0 0 1 4 39V16A11 11 0 0 1 15 5z" fill="url(#tt-g)"/>
+  <!-- three T's stepping down: TripleT -->
+  <g fill="#fff">
+    <rect x="10" y="13" width="16" height="5" rx="2"/><rect x="15.5" y="13" width="5" height="19" rx="2"/>
+    <rect x="24" y="19" width="16" height="5" rx="2" opacity=".85"/><rect x="29.5" y="19" width="5" height="19" rx="2" opacity=".85"/>
+    <rect x="38" y="25" width="16" height="5" rx="2" opacity=".65"/><rect x="43.5" y="25" width="5" height="19" rx="2" opacity=".65"/>
+  </g>
+</svg>

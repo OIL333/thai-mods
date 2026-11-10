@@ -47,6 +47,57 @@
     }
   }
 
+  // ===== animation =====
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // floating letters behind the hero (Thai, Japanese, Korean, Latin: "translation")
+  const glyphBox = document.querySelector(".glyphs");
+  if (glyphBox && !calm) {
+    const chars = "กขคทนภษไ๑あカ文한글ATÉ".split("");
+    const n = innerWidth < 640 ? 10 : 18;
+    for (let i = 0; i < n; i++) {
+      const g = document.createElement("span");
+      g.className = "glyph";
+      g.textContent = chars[Math.floor(Math.random() * chars.length)];
+      const dur = 14 + Math.random() * 14;
+      g.style.left = (Math.random() * 100) + "%";
+      g.style.fontSize = (16 + Math.random() * 30) + "px";
+      g.style.animationDuration = dur + "s";
+      g.style.animationDelay = (-Math.random() * dur) + "s";
+      g.style.setProperty("--o", (0.12 + Math.random() * 0.25).toFixed(2));
+      g.style.setProperty("--r", (Math.random() * 60 - 30).toFixed(0) + "deg");
+      if (Math.random() < 0.45) g.style.color = "var(--accent2)";
+      glyphBox.append(g);
+    }
+  }
+
+  // count-up numbers in the hero stats
+  const counters = document.querySelectorAll("[data-count]");
+  if (!calm) counters.forEach(el => {
+    const end = +el.dataset.count, plus = el.dataset.plus ? "+" : "", t0 = performance.now() + 500, len = 1400;
+    const fmt = v => v.toLocaleString("en-US") + plus;
+    el.textContent = fmt(0);
+    const step = now => {
+      const t = Math.min(1, Math.max(0, (now - t0) / len));
+      el.textContent = fmt(Math.round(end * (1 - Math.pow(1 - t, 3))));
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  });
+
+  // fade things in as they scroll into view
+  if (!calm && "IntersectionObserver" in window) {
+    const items = document.querySelectorAll("section h2, .ai-note, .mod, .faq details, .support, .form, .qr-card");
+    const io = new IntersectionObserver(entries => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    items.forEach((el, i) => {
+      el.classList.add("reveal");
+      if (el.matches(".faq details, .qr-card")) el.style.transitionDelay = (i % 6) * 60 + "ms";
+      io.observe(el);
+    });
+  }
+
   const btn = document.getElementById("themeBtn");
   const apply = t => { if (t) document.documentElement.setAttribute("data-theme", t); else document.documentElement.removeAttribute("data-theme"); };
   try { apply(localStorage.getItem("theme")); } catch (e) {}
