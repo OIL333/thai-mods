@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>แจ้งปัญหา | TripleT Translate</title>
+<meta name="description" content="แจ้งคำแปลผิด ข้อความล้นกรอบ หรือปัญหาการติดตั้งม็อดภาษาไทยของ TripleT Translate">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span>TripleT</span> Translate</a>
+    <nav>
+      <a href="index.html#mods">ม็อด</a>
+      <a href="report.html">แจ้งปัญหา</a>
+      <a href="index.html#support" class="hide-sm">🍵 เลี้ยงชาเขียว</a>
+      <button class="toggle" id="themeBtn" type="button" aria-label="สลับธีม">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap" style="max-width: 820px;">
+      <h2>แจ้งปัญหา / แจ้งคำแปลผิด</h2>
+      <p class="lead">กรอกเท่าที่รู้ก็พอ ยิ่งบอกตำแหน่งในเกมชัด ยิ่งแก้ได้เร็ว คำแปลทำด้วย AI จึงอาจมีจุดผิด ขอบคุณที่ช่วยกันแจ้งนะ</p>
+
+      <form class="form" id="reportForm" novalidate>
+        <div class="row2">
+          <div class="field">
+            <label for="game">เกม <span class="req">*</span></label>
+            <select id="game" required>
+              <option value="">— เลือกเกม —</option>
+              <option value="yohanuma">Yohane the Parhelion - NUMAZU in the MIRAGE -</option>
+              <option value="train45">Train45</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="ver">เวอร์ชันม็อด</label>
+            <input type="text" id="ver" placeholder="เช่น 1.0">
+            <p class="hint">ดูได้ในไฟล์ README ของม็อด</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label">ประเภทปัญหา <span class="req">*</span></span>
+          <div class="chips" id="kinds">
+            <label><input type="radio" name="kind" value="คำแปลผิด / ไม่เป็นธรรมชาติ"> คำแปลผิด / ไม่เป็นธรรมชาติ</label>
+            <label><input type="radio" name="kind" value="ข้อความล้นกรอบ / ตัดบรรทัดแปลก"> ข้อความล้นกรอบ / ตัดบรรทัดแปลก</label>
+            <label><input type="radio" name="kind" value="สระ/วรรณยุกต์ซ้อนหรือหาย"> สระ/วรรณยุกต์ซ้อนหรือหาย</label>
+            <label><input type="radio" name="kind" value="ข้อความยังเป็นภาษาอังกฤษ"> ยังเป็นภาษาอังกฤษ</label>
+            <label><input type="radio" name="kind" value="ติดตั้งไม่ได้ / เกมเด้ง"> ติดตั้งไม่ได้ / เกมเด้ง</label>
+            <label><input type="radio" name="kind" value="อื่น ๆ"> อื่น ๆ</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="where">เจอที่ไหนในเกม <span class="req">*</span></label>
+          <input type="text" id="where" placeholder="เช่น บทที่ 3 ฉากคุยกับฮานามารุ / เมนูตั้งค่า / คำอธิบายการ์ด 'ดาบไฟ'">
+        </div>
+
+        <div class="field">
+          <label for="now">ข้อความที่เห็นตอนนี้</label>
+          <textarea id="now" placeholder="พิมพ์หรือคัดลอกข้อความที่มีปัญหา"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="should">ควรเป็นแบบไหน (ถ้ามี)</label>
+          <textarea id="should" placeholder="คำแปลที่คิดว่าถูก หรืออธิบายว่าควรเป็นยังไง"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="more">รายละเอียดเพิ่มเติม</label>
+          <textarea id="more" placeholder="เช่น ทำอะไรก่อนเกมเด้ง, ใช้ Windows รุ่นไหน, ข้อความ error ที่ขึ้น"></textarea>
+          <p class="hint">มีภาพหน้าจอ? กด "ส่งผ่าน GitHub" แล้วลากรูปใส่ช่องข้อความในหน้าถัดไปได้เลย</p>
+        </div>
+
+        <div class="field">
+          <span class="label">ตัวอย่างรายงาน</span>
+          <div class="preview" id="preview">กรอกฟอร์มด้านบนแล้วรายงานจะขึ้นตรงนี้</div>
+        </div>
+
+        <ul class="tips">
+          <li>อย่าใส่ข้อมูลส่วนตัว เช่น เบอร์โทร อีเมล หรือ Steam ID (ไฟล์ log ของ BepInEx อาจมี Steam ID ให้ลบออกก่อนแนบ)</li>
+          <li>หน้า Issues บน GitHub เป็นสาธารณะ ทุกคนอ่านได้</li>
+        </ul>
+
+        <div class="btns">
+          <button class="btn primary" type="submit">ส่งผ่าน GitHub</button>
+          <button class="btn" type="button" id="copyBtn">คัดลอกรายงาน</button>
+          <a class="btn" id="contactBtn" href="#" target="_blank" rel="noopener" hidden></a>
+        </div>
+        <p class="msg" id="msg" role="status"></p>
+        <p class="hint">"ส่งผ่าน GitHub" ต้องมีบัญชี GitHub (สมัครฟรี) ถ้าไม่มี กด "คัดลอกรายงาน" แล้วส่งทางช่องทางอื่นได้</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>TripleT Translate</b> · คำแปลภาษาไทยแบบไม่เป็นทางการ แปลด้วย AI ทำโดยแฟน แจกฟรี</p>
+    <p><a href="index.html">กลับหน้าแรก</a> · <a data-link="issues" href="#">ดูรายการปัญหาที่แจ้งแล้ว</a></p>
+  </div>
+</footer>
+
+<script src="assets/config.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/report.js"></script>
+</body>
+</html>

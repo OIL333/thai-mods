@@ -1,0 +1,51 @@
+name: แจ้งปัญหา / คำแปลผิด
+description: แจ้งคำแปลผิด ข้อความล้นกรอบ สระลอย หรือติดตั้งไม่ได้
+title: "[เกม] ประเภทปัญหา: ตำแหน่ง"
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: เกม
+      options:
+        - Yohane the Parhelion - NUMAZU in the MIRAGE -
+        - Train45
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: เวอร์ชันม็อด
+      placeholder: เช่น 1.0
+  - type: dropdown
+    id: kind
+    attributes:
+      label: ประเภทปัญหา
+      options:
+        - คำแปลผิด / ไม่เป็นธรรมชาติ
+        - ข้อความล้นกรอบ / ตัดบรรทัดแปลก
+        - สระ/วรรณยุกต์ซ้อนหรือหาย
+        - ข้อความยังเป็นภาษาอังกฤษ
+        - ติดตั้งไม่ได้ / เกมเด้ง
+        - อื่น ๆ
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: เจอที่ไหนในเกม
+      placeholder: เช่น บทที่ 3 ฉากคุยกับฮานามารุ / เมนูตั้งค่า
+    validations:
+      required: true
+  - type: textarea
+    id: now
+    attributes:
+      label: ข้อความที่เห็นตอนนี้
+  - type: textarea
+    id: should
+    attributes:
+      label: ควรเป็นแบบไหน (ถ้ามี)
+  - type: textarea
+    id: more
+    attributes:
+      label: รายละเอียดเพิ่มเติม / ภาพหน้าจอ
+      description: ลากรูปมาวางได้ อย่าใส่ข้อมูลส่วนตัว (ไฟล์ log อาจมี Steam ID ให้ลบออกก่อน)
