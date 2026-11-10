@@ -306,5 +306,5 @@ footer p { margin: 0; }
 .nf .btns { justify-content: center; }
 
 /* theme switch animation (see main.js) */
-::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
-.theme-fade, .theme-fade * { transition: background-color .4s, color .4s, border-color .4s, fill .4s !important; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .45s; animation-timing-function: cubic-bezier(.4,0,.2,1); }
+.theme-fade, .theme-fade * { transition: background-color .45s, color .45s, border-color .45s, fill .45s !important; }
