@@ -6,11 +6,18 @@ window.SITE = {
       version: "1.0.1-beta", tag: "yohanuma-v1.0.1-beta", file: "Yohanuma-ThaiMod-v1.0.1-beta.zip",
       name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
       store: "https://store.steampowered.com/app/2459750/",
+      // ภาพในเกม (ใส่ไฟล์ไว้ที่ assets/shots แล้วเพิ่มบรรทัดที่นี่)
+      shots: [
+        { src: "assets/shots/yohanuma-title.jpg", thumb: "assets/shots/yohanuma-title-thumb.jpg", caption: "หน้าแรก: ปุ่มเมนูเป็นภาษาไทย และเครดิตผู้แปลมุมขวาล่าง" },
+      ],
     },
     train45: {
       version: "1.0.1", tag: "train45-v1.0.1", file: "Train45-ThaiMod-v1.0.1.zip",
       name: "Train45",
       store: "https://store.steampowered.com/app/3711590/",
+      shots: [
+        { src: "assets/shots/train45-title.jpg", thumb: "assets/shots/train45-title-thumb.jpg", caption: "หน้าแรก: เมนูเป็นภาษาไทยทั้งหมด" },
+      ],
     },
   },
   donate: {
