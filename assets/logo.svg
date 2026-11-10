@@ -4,13 +4,17 @@
       <stop offset="0" stop-color="#4cc9f0"/>
       <stop offset="1" stop-color="#f72585"/>
     </linearGradient>
+    <!-- soft shadow so the white T's stay sharp on the light cyan corner -->
+    <filter id="tt-s" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="1.2" stdDeviation="1" flood-color="#3a0b3f" flood-opacity=".35"/>
+    </filter>
   </defs>
   <!-- speech bubble = translation -->
   <path d="M15 5h34a11 11 0 0 1 11 11v23a11 11 0 0 1-11 11H31l-11 9v-9h-5A11 11 0 0 1 4 39V16A11 11 0 0 1 15 5z" fill="url(#tt-g)"/>
-  <!-- three T's stepping down: TripleT -->
-  <g fill="#fff">
+  <!-- three solid T's stepping down: TripleT -->
+  <g fill="#fff" filter="url(#tt-s)">
     <rect x="10" y="13" width="16" height="5" rx="2"/><rect x="15.5" y="13" width="5" height="19" rx="2"/>
-    <rect x="24" y="19" width="16" height="5" rx="2" opacity=".85"/><rect x="29.5" y="19" width="5" height="19" rx="2" opacity=".85"/>
-    <rect x="38" y="25" width="16" height="5" rx="2" opacity=".65"/><rect x="43.5" y="25" width="5" height="19" rx="2" opacity=".65"/>
+    <rect x="24" y="19" width="16" height="5" rx="2"/><rect x="29.5" y="19" width="5" height="19" rx="2"/>
+    <rect x="38" y="25" width="16" height="5" rx="2"/><rect x="43.5" y="25" width="5" height="19" rx="2"/>
   </g>
 </svg>
