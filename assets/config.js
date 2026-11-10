@@ -6,22 +6,17 @@ window.SITE = {
       version: "1.0.1-beta", tag: "yohanuma-v1.0.1-beta", file: "Yohanuma-ThaiMod-v1.0.1-beta.zip",
       name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
       store: "https://store.steampowered.com/app/2459750/",
-      // ภาพในเกม (ใส่ไฟล์ไว้ที่ assets/shots แล้วเพิ่มบรรทัดที่นี่)
-      shots: [
-        { src: "assets/shots/yohanuma-title.jpg", thumb: "assets/shots/yohanuma-title-thumb.jpg", caption: "หน้าแรก: ปุ่มเมนูเป็นภาษาไทย และเครดิตผู้แปลมุมขวาล่าง" },
-      ],
     },
     train45: {
       version: "1.0.1", tag: "train45-v1.0.1", file: "Train45-ThaiMod-v1.0.1.zip",
       name: "Train45",
       store: "https://store.steampowered.com/app/3711590/",
-      shots: [
-        { src: "assets/shots/train45-title.jpg", thumb: "assets/shots/train45-title-thumb.jpg", caption: "หน้าแรก: เมนูเป็นภาษาไทยทั้งหมด" },
-      ],
     },
   },
   donate: {
     accountName: "กษิดิ์เดช ปทุมมาศ",
+    // การ์ดบัญชีธนาคาร (โอนผ่านเลขบัญชี) ขนาดเท่าการ์ด QR
+    bank: { label: "ธนาคารกสิกรไทย", sub: "โอนผ่านเลขบัญชี", number: "073-8-97547-2", color: "#00a650" },
     // รูป QR จากแอปจริง ครอปเป็นสี่เหลี่ยมจัตุรัส (เปลี่ยนรูปได้ที่โฟลเดอร์ assets)
     qrImages: [
       { src: "assets/qr-promptpay.png", label: "พร้อมเพย์", sub: "สแกนได้ทุกแอปธนาคาร", color: "#113f67" },

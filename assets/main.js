@@ -45,6 +45,30 @@
       fig.append(head, img, name);
       qrGrid.append(fig);
     }
+    // bank account card, same size as the QR cards
+    const bk = SITE.donate.bank;
+    if (bk && bk.number) {
+      const fig = document.createElement("figure"); fig.className = "qr-card bank-card";
+      const head = document.createElement("div"); head.className = "qr-head"; head.style.background = bk.color || "var(--accent)";
+      head.innerHTML = "<b></b><small></small>";
+      head.querySelector("b").textContent = bk.label;
+      head.querySelector("small").textContent = bk.sub || "";
+      const body = document.createElement("div"); body.className = "bank-body";
+      const icon = document.createElement("div"); icon.className = "bank-icon"; icon.textContent = "🏦";
+      const label = document.createElement("small"); label.textContent = "เลขบัญชี";
+      const no = document.createElement("div"); no.className = "bank-no"; no.textContent = bk.number;
+      const btn = document.createElement("button"); btn.type = "button"; btn.className = "bank-copy"; btn.textContent = "📋 คัดลอกเลขบัญชี";
+      btn.onclick = () => {
+        const digits = bk.number.replace(/\D/g, "");
+        (navigator.clipboard ? navigator.clipboard.writeText(digits) : Promise.reject()).then(() => {
+          btn.textContent = "✓ คัดลอกแล้ว"; setTimeout(() => { btn.textContent = "📋 คัดลอกเลขบัญชี"; }, 1600);
+        }).catch(() => { btn.textContent = digits; });
+      };
+      body.append(icon, label, no, btn);
+      const name = document.createElement("figcaption"); name.textContent = SITE.donate.accountName || "";
+      fig.append(head, body, name);
+      qrGrid.append(fig);
+    }
   }
 
   // ===== in-game screenshot gallery + lightbox =====
