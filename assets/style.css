@@ -199,8 +199,32 @@ code { background: var(--bg2); border: 1px solid var(--line); border-radius: 6px
 .page-head h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 8px; }
 .page-head p { color: var(--muted); margin: 0; }
 
-footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .9rem; }
-footer p { margin: 6px 0; }
+/* footer: glowing gradient line, centered logo, soft legal card */
+footer {
+  position: relative; border-top: 1px solid var(--line); padding: 44px 0 40px; color: var(--muted); font-size: .9rem; text-align: center;
+  background: radial-gradient(55% 140px at 50% 0, color-mix(in srgb, var(--accent) 12%, transparent), transparent),
+              linear-gradient(180deg, transparent, color-mix(in srgb, var(--bg2) 80%, transparent));
+}
+footer::before {
+  content: ""; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: min(720px, 90%); height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent2) 45%, transparent);
+}
+footer .wrap { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+footer p { margin: 0; }
+.foot-brand { font-size: 1.35rem; }
+.foot-brand img { width: 44px; height: 44px; filter: drop-shadow(0 6px 14px color-mix(in srgb, var(--accent2) 30%, transparent)); }
+.foot-legal {
+  max-width: 760px; padding: 14px 20px; border-radius: 14px; border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 70%, transparent); font-size: .88rem; line-height: 1.8;
+}
+.foot-legal a { font-weight: 600; text-underline-offset: 3px; }
+@media (max-width: 640px) { .foot-legal br { display: none; } .foot-legal { padding: 12px 14px; } }
+.foot-home {
+  display: inline-flex; align-items: center; gap: 6px; padding: 8px 20px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--card); color: var(--text); text-decoration: none; font-weight: 600; transition: transform .2s, border-color .2s;
+}
+.foot-home:hover { transform: translateY(-2px); border-color: var(--accent); }
 .toggle { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 4px 12px; cursor: pointer; font: inherit; font-size: .85rem; margin-left: 14px; }
 
 /* ===== report page ===== */
@@ -224,6 +248,8 @@ footer p { margin: 6px 0; }
 .preview { white-space: pre-wrap; background: var(--bg2); border: 1px dashed var(--line); border-radius: 12px; padding: 14px; font-size: .9rem; color: var(--muted); max-height: 280px; overflow: auto; }
 .form .btns { justify-content: flex-start; }
 .msg { margin: 0; font-size: .92rem; color: var(--ok); min-height: 1.4em; }
+.msg:empty { display: none; }
+.form > .hint { margin: -8px 0 0; color: var(--muted); font-size: .88rem; }
 .msg.err { color: var(--accent2); }
 .tips { color: var(--muted); font-size: .93rem; margin: 0; padding-left: 20px; }
 
