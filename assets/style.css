@@ -146,7 +146,7 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 }
 .mod details.guide summary::-webkit-details-marker { display: none; }
 .mod details.guide summary::after { content: "+"; color: var(--muted); font-size: 1.3rem; line-height: 1; }
-.mod details.guide[open] summary::after { content: "−"; }
+.mod details.guide[open]:not(.closing) summary::after { content: "−"; }
 .steps { counter-reset: s; list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 10px; }
 .steps li { counter-increment: s; position: relative; padding: 10px 14px 10px 52px; background: var(--bg2); border-radius: 12px; }
 .steps li::before {
@@ -184,14 +184,14 @@ code { background: var(--bg2); border: 1px solid var(--line); border-radius: 6px
 /* FAQ: click a question to open it */
 .faq { display: grid; gap: 10px; }
 .faq details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 18px; }
-.faq details[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.faq details[open]:not(.closing) { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .faq summary {
   cursor: pointer; padding: 14px 0; font-weight: 700; list-style: none;
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; color: var(--muted); font-size: 1.3rem; line-height: 1; flex: none; }
-.faq details[open] summary::after { content: "−"; }
+.faq details[open]:not(.closing) summary::after { content: "−"; }
 .faq details p { margin: 0 0 16px; color: var(--muted); }
 
 /* donate page */
@@ -241,8 +241,11 @@ footer p { margin: 0; }
   :root:not([data-theme="dark"]) .toggle .i-sun { display: none; }
   :root:not([data-theme="dark"]) .toggle .i-moon { display: block; }
 }
-/* line icons inside buttons (download, send) */
+/* line icons inside buttons (download, send, guide chevron) */
 .btn .ico { width: 1.2em; height: 1.2em; flex: none; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.btn .chev { width: 1.05em; height: 1.05em; margin-right: -4px; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+.btn[aria-expanded="true"] { border-color: var(--accent); }
+.btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
 
 /* ===== report page ===== */
 .form { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: grid; gap: 18px; }

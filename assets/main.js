@@ -6,11 +6,6 @@
     document.querySelectorAll(`[data-store="${id}"]`).forEach(a => { if (m.store) a.href = m.store; else a.remove(); });
   }
   document.querySelectorAll('[data-link="issues"]').forEach(a => a.href = SITE.repo + "/issues");
-  document.querySelectorAll("[data-open]").forEach(btn => btn.addEventListener("click", () => {
-    const d = document.getElementById(btn.dataset.open);
-    d.open = true;
-    d.scrollIntoView({ behavior: "smooth", block: "nearest" });
-  }));
 
   const list = document.getElementById("payList");
   if (list) {
@@ -131,6 +126,51 @@
 
   // ===== animation =====
   const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // smooth open/close for every <details> (install guides + FAQ); the "วิธีติดตั้ง" buttons toggle their guide
+  const isOpen = d => d.open && !d.classList.contains("closing");
+  const syncButtons = (d, open) => {
+    if (d.id) document.querySelectorAll(`[data-open="${d.id}"]`).forEach(b => b.setAttribute("aria-expanded", String(open)));
+  };
+  function setDetails(d, open, done) {
+    syncButtons(d, open);
+    if (calm || !d.animate) { d.open = open; d.classList.remove("closing"); if (done) done(); return; }
+    const from = d.getBoundingClientRect().height;
+    if (d._anim) d._anim.cancel();
+    d.classList.remove("closing");
+    d.open = open;
+    const to = d.getBoundingClientRect().height;
+    d.open = true;                                   // keep the content visible while it slides
+    if (!open) d.classList.add("closing");
+    d.style.overflow = "hidden";
+    const opts = { duration: 340, easing: "cubic-bezier(.2,.7,.2,1)", fill: "forwards" };
+    (d._fades || []).forEach(f => f.cancel());
+    const a = d.animate({ height: [from + "px", to + "px"] }, opts);
+    d._fades = [...d.querySelectorAll(":scope > :not(summary)")].map(el => el.animate(
+      open ? { opacity: [0, 1], transform: ["translateY(-8px)", "none"] } : { opacity: [1, 0], transform: ["none", "translateY(-8px)"] },
+      { ...opts, duration: open ? 380 : 220 }));
+    d._anim = a;
+    a.onfinish = () => {
+      d._anim = null; d.style.overflow = "";
+      if (!open) { d.open = false; d.classList.remove("closing"); }
+      a.cancel(); d._fades.forEach(f => f.cancel()); d._fades = [];   // back to natural height / full opacity
+      if (done) done();
+    };
+  }
+  document.querySelectorAll("details > summary").forEach(s => s.addEventListener("click", e => {
+    e.preventDefault();
+    const d = s.parentElement;
+    setDetails(d, !isOpen(d));
+  }));
+  document.querySelectorAll("[data-open]").forEach(btn => {
+    const d = document.getElementById(btn.dataset.open);
+    btn.setAttribute("aria-controls", d.id);
+    btn.setAttribute("aria-expanded", String(d.open));
+    btn.addEventListener("click", () => {
+      const open = !isOpen(d);
+      setDetails(d, open, open ? () => d.scrollIntoView({ behavior: calm ? "auto" : "smooth", block: "nearest" }) : null);
+    });
+  });
 
   // floating letters behind the hero (Thai, Japanese, Korean, Latin: "translation")
   const glyphBox = document.querySelector(".glyphs");
