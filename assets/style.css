@@ -33,7 +33,7 @@ header.top .wrap { display: flex; align-items: center; justify-content: space-be
 nav { display: flex; align-items: center; }
 nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: .95rem; white-space: nowrap; }
 nav a:hover { color: var(--text); }
-@media (max-width: 640px) { nav a.hide-sm { display: none; } nav a { margin-left: 12px; } }
+@media (max-width: 640px) { nav a.hide-sm, nav .long { display: none; } nav a { margin-left: 12px; } .brand { font-size: 1.1rem; } .toggle { margin-left: 10px; } }
 
 .hero { padding: 72px 0 48px; text-align: center; position: relative; overflow: hidden; }
 .hero::before {
@@ -65,6 +65,7 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 @media (max-width: 800px) { .mod .top { grid-template-columns: 1fr; } }
 .mod .shot { background: var(--bg2); min-height: 100%; aspect-ratio: 16 / 9; }
 .mod .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.mod .shot svg.cover { width: 100%; height: 100%; display: block; }
 .mod .shot.placeholder { display: grid; place-items: center; background: linear-gradient(135deg, #2b2d42, #3a0ca3 60%, #7209b7); color: #fff; }
 .mod .shot.placeholder b { font-family: "Mitr", sans-serif; font-size: 2.4rem; letter-spacing: .04em; }
 .mod .body { padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
@@ -112,7 +113,9 @@ code { background: var(--bg2); border: 1px solid var(--line); border-radius: 6px
 .pay li b { font-variant-numeric: tabular-nums; letter-spacing: .02em; }
 .copy { background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 0 8px; cursor: pointer; font: inherit; font-size: .8rem; margin-left: 8px; }
 .qr { background: #fff; padding: 12px; border-radius: 16px; width: 220px; max-width: 100%; justify-self: center; }
-.qr img { width: 100%; display: block; }
+.qr img, .qr canvas { width: 100%; height: auto; display: block; }
+#qrGen img { image-rendering: pixelated; }
+.qr-cap { margin: 8px 0 0; text-align: center; color: #333; font-size: .85rem; }
 
 .faq dt { font-weight: 700; margin-top: 18px; }
 .faq dd { margin: 4px 0 0; color: var(--muted); }

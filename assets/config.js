@@ -6,10 +6,13 @@ window.SITE = {
     train45:  { version: "1.0",      tag: "train45-v1.0",       file: "Train45-ThaiMod-v1.0.zip" },
   },
   donate: {
-    qrImage: "assets/donate-qr.png",   // วางรูป QR พร้อมเพย์ไว้ที่ไฟล์นี้ (ถ้าไม่มีไฟล์ จะซ่อนกล่อง QR)
+    qrImage: "",                       // ถ้ามีรูป QR ของธนาคาร ใส่ "assets/donate-qr.png" แล้วจะใช้รูปนั้นแทน QR ที่สร้างอัตโนมัติ
+    promptpay: "0996547414",           // ใช้สร้าง QR พร้อมเพย์อัตโนมัติ (ถ้าไม่มีรูป qrImage)
     items: [
-      // { label: "ชื่อบัญชี", value: "..." },
-      // { label: "ธนาคาร...", value: "...", copy: true },
+      { label: "ชื่อบัญชี", value: "กษิดิ์เดช ปทุมมาศ" },
+      { label: "ธนาคารกสิกรไทย", value: "073-8-97547-2", copy: true },
+      { label: "พร้อมเพย์", value: "099-654-7414", copy: true },
+      { label: "ทรูมันนี่วอลเล็ท", value: "099-654-7414", copy: true },
     ],
     koFi: "",                          // เช่น "https://ko-fi.com/xxxx" (เว้นว่าง = ไม่แสดง)
   },
