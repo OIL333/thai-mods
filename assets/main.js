@@ -54,7 +54,13 @@
       head.querySelector("b").textContent = bk.label;
       head.querySelector("small").textContent = bk.sub || "";
       const body = document.createElement("div"); body.className = "bank-body";
-      const icon = document.createElement("div"); icon.className = "bank-icon"; icon.textContent = "🏦";
+      let icon;
+      if (bk.logo) {
+        icon = document.createElement("img"); icon.className = "bank-logo"; icon.src = bk.logo;
+        icon.alt = bk.label; icon.width = 64; icon.height = 64;
+      } else {
+        icon = document.createElement("div"); icon.className = "bank-icon"; icon.textContent = "🏦";
+      }
       const label = document.createElement("small"); label.textContent = "เลขบัญชี";
       const no = document.createElement("div"); no.className = "bank-no"; no.textContent = bk.number;
       const btn = document.createElement("button"); btn.type = "button"; btn.className = "bank-copy"; btn.textContent = "📋 คัดลอกเลขบัญชี";

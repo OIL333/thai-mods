@@ -16,7 +16,7 @@ window.SITE = {
   donate: {
     accountName: "กษิดิ์เดช ปทุมมาศ",
     // การ์ดบัญชีธนาคาร (โอนผ่านเลขบัญชี) ขนาดเท่าการ์ด QR
-    bank: { label: "ธนาคารกสิกรไทย", sub: "โอนผ่านเลขบัญชี", number: "073-8-97547-2", color: "#00a650" },
+    bank: { label: "ธนาคารกสิกรไทย", sub: "โอนผ่านเลขบัญชี", number: "073-8-97547-2", color: "#00a650", logo: "assets/kbank-logo.png" },
     // รูป QR จากแอปจริง ครอปเป็นสี่เหลี่ยมจัตุรัส (เปลี่ยนรูปได้ที่โฟลเดอร์ assets)
     qrImages: [
       { src: "assets/qr-promptpay.png", label: "พร้อมเพย์", sub: "สแกนได้ทุกแอปธนาคาร", color: "#113f67" },
