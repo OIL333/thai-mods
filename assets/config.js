@@ -2,8 +2,16 @@
 window.SITE = {
   repo: "https://github.com/OIL333/thai-mods",
   mods: {
-    yohanuma: { version: "1.0-beta", tag: "yohanuma-v1.0-beta", file: "Yohanuma-ThaiMod-v1.0-beta.zip" },
-    train45:  { version: "1.0",      tag: "train45-v1.0",       file: "Train45-ThaiMod-v1.0.zip" },
+    yohanuma: {
+      version: "1.0-beta", tag: "yohanuma-v1.0-beta", file: "Yohanuma-ThaiMod-v1.0-beta.zip",
+      name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
+      store: "https://store.steampowered.com/app/2459750/",
+    },
+    train45: {
+      version: "1.0", tag: "train45-v1.0", file: "Train45-ThaiMod-v1.0.zip",
+      name: "Train45",
+      store: "https://store.steampowered.com/app/3711590/",
+    },
   },
   donate: {
     qrImage: "",                       // ถ้ามีรูป QR ของธนาคาร ใส่ "assets/donate-qr.png" แล้วจะใช้รูปนั้นแทน QR ที่สร้างอัตโนมัติ
@@ -17,9 +25,9 @@ window.SITE = {
     koFi: "",                          // เช่น "https://ko-fi.com/xxxx" (เว้นว่าง = ไม่แสดง)
   },
   report: {
-    // ช่องทางแจ้งปัญหาสำหรับคนที่ไม่มีบัญชี GitHub เช่น เพจ Facebook หรือ LINE OpenChat (เว้นว่าง = ไม่แสดง)
-    contact: "",
-    contactLabel: "ส่งทางเพจ Facebook",
+    // กุญแจจาก web3forms.com (ฟรี) ให้คนแจ้งปัญหาได้โดยไม่ต้องมีบัญชีอะไร รายงานจะส่งเข้าอีเมลของคุณ
+    // เว้นว่าง = ปุ่ม "ส่งเลย" จะเปิดหน้า GitHub แทน
+    web3formsKey: "",
   },
 };
 /* ======================================== */

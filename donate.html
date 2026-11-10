@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>เลี้ยงชาเขียว | TripleT Translate</title>
+<meta name="description" content="อยากเลี้ยงชาเขียวคนแปลม็อดภาษาไทย ไม่บังคับ ม็อดยังโหลดฟรีเหมือนเดิม">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span>TripleT</span> Translate</a>
+    <nav>
+      <a href="index.html#mods" class="hide-sm">ม็อด</a>
+      <a href="index.html#faq" class="hide-sm">คำถาม</a>
+      <a href="report.html">แจ้งปัญหา</a>
+      <a href="donate.html">🍵<span class="long"> เลี้ยงชาเขียว</span></a>
+      <button class="toggle" id="themeBtn" type="button" aria-label="สลับธีม">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <h1>🍵 เลี้ยงชาเขียวคนแปล</h1>
+    <p>ม็อดทุกตัวโหลดฟรี เลี้ยงหรือไม่เลี้ยงก็ได้เหมือนกันนะ</p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="support">
+        <div>
+          <p>ถ้าม็อดนี้ทำให้เล่นเกมสนุกขึ้น อยากเลี้ยงชาเขียวสักแก้วเป็นกำลังใจ ก็ขอบคุณมาก ๆ เลย 💚
+            สแกน QR ด้วยแอปธนาคาร หรือโอนตามเลขด้านล่างได้เลย</p>
+          <ul class="pay" id="payList"></ul>
+          <p class="note" id="koFiRow" hidden>อยู่ต่างประเทศ: <a id="koFiLink" href="#" target="_blank" rel="noopener">Ko-fi</a></p>
+        </div>
+        <div class="qr" id="qrBox" hidden>
+          <img id="qrImg" alt="QR พร้อมเพย์ สำหรับเลี้ยงชาเขียว">
+          <div id="qrGen" aria-label="QR พร้อมเพย์ สำหรับเลี้ยงชาเขียว"></div>
+          <p class="qr-cap">สแกนด้วยแอปธนาคาร · พร้อมเพย์</p>
+        </div>
+      </div>
+      <p class="note" style="margin-top:16px">ก่อนกดโอน แอปธนาคารจะขึ้นชื่อบัญชีให้เช็กอีกครั้ง ตรวจให้ตรงกับชื่อด้านบนก่อนนะ</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>TripleT Translate</b> · ม็อดแปลไทยที่แฟน ๆ ทำ แจกฟรี (แปลด้วย AI)</p>
+    <p><a href="index.html">กลับหน้าแรก</a></p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="assets/config.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>

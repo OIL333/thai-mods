@@ -61,15 +61,18 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 /* ===== mod cards (info + install guide together) ===== */
 .mods { display: grid; gap: 28px; }
 .mod { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 76px; }
-.mod .top { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+/* cover shown whole (Steam capsule 460x215), never cropped */
+.mod .top { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); align-items: start; }
 @media (max-width: 800px) { .mod .top { grid-template-columns: 1fr; } }
-.mod .shot { background: var(--bg2); min-height: 100%; aspect-ratio: 16 / 9; }
-.mod .shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.mod .shot.capsule { position: relative; overflow: hidden; display: grid; place-items: center; }
-.mod .shot.capsule::before { content: ""; position: absolute; inset: -30px; background: var(--cover) center / cover no-repeat; filter: blur(22px) brightness(.55) saturate(1.2); }
-.mod .shot.capsule img { position: relative; width: 100%; height: auto; object-fit: contain; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
-.mod .shot.placeholder { display: grid; place-items: center; background: linear-gradient(135deg, #2b2d42, #3a0ca3 60%, #7209b7); color: #fff; }
-.mod .shot.placeholder b { font-family: "Mitr", sans-serif; font-size: 2.4rem; letter-spacing: .04em; }
+.mod .side { padding: 20px 0 20px 20px; display: grid; gap: 10px; }
+@media (max-width: 800px) { .mod .side { padding: 16px 16px 0; } }
+.mod .shot { aspect-ratio: 460 / 215; border-radius: 12px; overflow: hidden; background: var(--bg2); box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+.mod .shot img { width: 100%; height: 100%; display: block; }
+.store {
+  display: flex; align-items: center; justify-content: center; gap: 6px; padding: 9px 14px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--bg2); color: var(--text); text-decoration: none; font-size: .92rem; font-weight: 600;
+}
+.store:hover { border-color: var(--accent); }
 .mod .body { padding: 22px 24px; display: flex; flex-direction: column; gap: 10px; }
 .mod h3 { margin: 0; font-size: 1.35rem; }
 .badges { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -119,8 +122,23 @@ code { background: var(--bg2); border: 1px solid var(--line); border-radius: 6px
 #qrGen img { image-rendering: pixelated; }
 .qr-cap { margin: 8px 0 0; text-align: center; color: #333; font-size: .85rem; }
 
-.faq dt { font-weight: 700; margin-top: 18px; }
-.faq dd { margin: 4px 0 0; color: var(--muted); }
+/* FAQ: click a question to open it */
+.faq { display: grid; gap: 10px; }
+.faq details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 0 18px; }
+.faq details[open] { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.faq summary {
+  cursor: pointer; padding: 14px 0; font-weight: 700; list-style: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--muted); font-size: 1.3rem; line-height: 1; flex: none; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0 0 16px; color: var(--muted); }
+
+/* donate page */
+.page-head { padding: 48px 0 8px; }
+.page-head h1 { font-size: clamp(1.7rem, 4vw, 2.4rem); margin: 0 0 8px; }
+.page-head p { color: var(--muted); margin: 0; }
 
 footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: .9rem; }
 footer p { margin: 6px 0; }

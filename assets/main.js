@@ -18,6 +18,7 @@ function promptPayPayload(mobile) {
   for (const [id, m] of Object.entries(SITE.mods)) {
     document.querySelectorAll(`[data-dl="${id}"]`).forEach(a => a.href = `${SITE.repo}/releases/download/${m.tag}/${m.file}`);
     document.querySelectorAll(`[data-ver="${id}"]`).forEach(b => b.textContent = "v" + m.version);
+    document.querySelectorAll(`[data-store="${id}"]`).forEach(a => { if (m.store) a.href = m.store; else a.remove(); });
   }
   document.querySelectorAll('[data-link="issues"]').forEach(a => a.href = SITE.repo + "/issues");
   document.querySelectorAll("[data-open]").forEach(btn => btn.addEventListener("click", () => {
