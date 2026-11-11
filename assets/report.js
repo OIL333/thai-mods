@@ -38,7 +38,7 @@
         ],
       };
     }
-    const short = $("game").value === "yohanuma" ? "Yohanuma" : gameName();
+    const short = { yohanuma: "Yohanuma", nijichizu: "Nijichizu" }[$("game").value] || gameName();
     return {
       kind: "แจ้งปัญหา",
       title: `[${short}] ${radio("kind")}: ${val("where")}`.slice(0, 120),
