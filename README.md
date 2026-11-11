@@ -3,6 +3,7 @@
 แปลเกมเป็นภาษาไทย คำแปลแบบไม่เป็นทางการ (แฟนเมด) **แปลด้วย AI** แจกฟรี
 
 เว็บไซต์: https://oil333.github.io/thai-mods/
+เพจ Facebook: https://www.facebook.com/TripleT.Translate/
 
 | เกม | สถานะ | ดาวน์โหลด |
 |---|---|---|
