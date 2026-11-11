@@ -6,12 +6,12 @@
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     --bg: #f5f7fc; --bg2: #e9eef9; --card: #ffffff; --line: #d6ddef;
-    --text: #141a2e; --muted: #56607d; --accent: #0a84c6; --accent2: #d0186a; --tea: #3f8f35;
+    --text: #141a2e; --muted: #56607d; --accent: #076fa8; --accent2: #d0186a; --tea: #2f7428; --ok: #11785a; --warn: #8a5d00;
   }
 }
 :root[data-theme="light"] {
   --bg: #f5f7fc; --bg2: #e9eef9; --card: #ffffff; --line: #d6ddef;
-  --text: #141a2e; --muted: #56607d; --accent: #0a84c6; --accent2: #d0186a; --tea: #3f8f35;
+  --text: #141a2e; --muted: #56607d; --accent: #076fa8; --accent2: #d0186a; --tea: #2f7428; --ok: #11785a; --warn: #8a5d00;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -36,6 +36,8 @@ nav { display: flex; align-items: center; }
 nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: .95rem; white-space: nowrap; }
 nav a:hover { color: var(--text); }
 @media (max-width: 640px) { nav a.hide-sm, nav .long { display: none; } nav a { margin-left: 12px; } .brand { font-size: 1.05rem; gap: 6px; } .brand img { width: 28px; height: 28px; } .toggle { margin-left: 10px; } }
+/* very small phones (320px): logo only in the header so the nav still fits */
+@media (max-width: 360px) { header.top .brand { font-size: 0; gap: 0; } header.top .brand img { width: 30px; height: 30px; } }
 @media (max-width: 480px) {
   .hero .stats { gap: 8px; flex-wrap: nowrap; }
   .hero .stats li { flex: 1 1 0; min-width: 0; padding: 8px 6px; }
@@ -103,6 +105,7 @@ nav a:hover { color: var(--text); }
 }
 .btn:hover { transform: translateY(-2px); border-color: var(--accent); }
 .btn.primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #fff; border: 0; }
+.btn.primary { text-shadow: 0 1px 3px rgba(0,0,0,.35); }
 .btn.tea { border-color: color-mix(in srgb, var(--tea) 60%, transparent); }
 .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
