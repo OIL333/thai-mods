@@ -3,7 +3,7 @@ window.SITE = {
   repo: "https://github.com/OIL333/thai-mods",
   mods: {
     yohanuma: {
-      version: "1.0.1-beta", tag: "yohanuma-v1.0.1-beta", file: "Yohanuma-ThaiMod-v1.0.1-beta.zip",
+      version: "1.0.2-beta", tag: "yohanuma-v1.0.2-beta", file: "Yohanuma-ThaiMod-v1.0.2-beta.zip",
       name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
       store: "https://store.steampowered.com/app/2459750/",
     },
