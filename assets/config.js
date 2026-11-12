@@ -13,7 +13,7 @@ window.SITE = {
       store: "https://store.steampowered.com/app/3711590/",
     },
     nijichizu: {
-      version: "1.0-beta", tag: "nijichizu-v1.0-beta", file: "Nijichizu-ThaiMod-v1.0-beta.zip",
+      version: "1.0.1-beta", tag: "nijichizu-v1.0.1-beta", file: "Nijichizu-ThaiMod-v1.0.1-beta.zip",
       name: "Love Live! Nijigasaki High School Idol Club TOKIMEKI Roadmap to the Future",
       store: "https://store.steampowered.com/app/3213690/",
     },

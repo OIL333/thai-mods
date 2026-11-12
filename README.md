@@ -9,7 +9,7 @@
 |---|---|---|
 | Train45 (18+) | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/train45-v1.0.2) |
 | Yohane the Parhelion - NUMAZU in the MIRAGE - | เวอร์ชันทดลอง (beta) | [Releases](https://github.com/OIL333/thai-mods/releases/tag/yohanuma-v1.0.3-beta) |
-| Love Live! Nijigasaki High School Idol Club TOKIMEKI Roadmap to the Future | เวอร์ชันทดลอง (beta) | [Releases](https://github.com/OIL333/thai-mods/releases/tag/nijichizu-v1.0-beta) |
+| Love Live! Nijigasaki High School Idol Club TOKIMEKI Roadmap to the Future | เวอร์ชันทดลอง (beta) | [Releases](https://github.com/OIL333/thai-mods/releases/tag/nijichizu-v1.0.1-beta) |
 
 วิธีติดตั้งอยู่ในหน้าเว็บและในไฟล์ README ที่อยู่ใน zip ของแต่ละเกม
 
