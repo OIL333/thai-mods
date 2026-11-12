@@ -5,6 +5,50 @@
     document.querySelectorAll(`[data-ver="${id}"]`).forEach(b => b.textContent = "v" + m.version);
     document.querySelectorAll(`[data-store="${id}"]`).forEach(a => { if (m.store) a.href = m.store; else a.remove(); });
   }
+  // "ใหม่" badge on the most recently added game, for 30 days after its first release
+  const newest = Object.entries(SITE.mods).filter(([, m]) => m.added).sort((a, b) => Date.parse(b[1].added) - Date.parse(a[1].added))[0];
+  if (newest && Date.now() - Date.parse(newest[1].added) < 30 * 864e5)
+    document.querySelectorAll(`[data-new="${newest[0]}"]`).forEach(b => b.hidden = false);
+
+  // hero numbers come from the game list, so adding a game updates them
+  const mods = Object.values(SITE.mods);
+  document.querySelectorAll('[data-stat="games"]').forEach(b => { b.dataset.count = mods.length; b.textContent = mods.length; });
+  const lines = Math.floor(mods.reduce((n, m) => n + (m.lines || 0), 0) / 1000) * 1000;
+  document.querySelectorAll('[data-stat="lines"]').forEach(b => { b.dataset.count = lines; b.textContent = lines.toLocaleString("en-US") + "+"; });
+
+  // under each download button: file size · update date · tested game version · what changed
+  const fmtSize = b => (b >= 1e6 ? Math.round(b / 1e6) : (b / 1e6).toFixed(1)) + " MB";
+  const fmtDate = d => new Date(d).toLocaleDateString("th-TH", { day: "numeric", month: "short", year: "numeric" });
+  function meta(id, size, date) {
+    const m = SITE.mods[id];
+    document.querySelectorAll(`[data-meta="${id}"]`).forEach(p => {
+      p.textContent = "";
+      const parts = [`ไฟล์ zip ${fmtSize(size)}`, `อัปเดต ${fmtDate(date)}`];
+      if (m.gameVer) parts.push(`ทดสอบกับเกม ${m.gameVer}`);
+      parts.forEach((t, i) => {
+        if (i) { const s = document.createElement("span"); s.className = "sep"; s.textContent = "·"; p.append(s); }
+        p.append(t);
+      });
+      const s = document.createElement("span"); s.className = "sep"; s.textContent = "·";
+      const a = document.createElement("a");
+      a.href = `${SITE.repo}/releases/tag/${m.tag}`; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = "ดูว่าแก้อะไรบ้าง ↗";
+      p.append(s, a);
+    });
+  }
+  for (const [id, m] of Object.entries(SITE.mods)) if (m.size) meta(id, m.size, m.date);
+  // the live size/date of each release (config values stay if GitHub can't be reached)
+  if (document.querySelector("[data-meta]") && window.fetch) {
+    fetch(SITE.repo.replace("https://github.com/", "https://api.github.com/repos/") + "/releases?per_page=30")
+      .then(r => r.ok ? r.json() : [])
+      .then(rels => {
+        for (const [id, m] of Object.entries(SITE.mods)) {
+          const rel = rels.find(r => r.tag_name === m.tag);
+          const asset = rel && rel.assets.find(a => a.name === m.file);
+          if (asset) meta(id, asset.size, rel.published_at);
+        }
+      }).catch(() => {});
+  }
 
   // QR cards (SITE.donate.qrImages): same-size square QR, colored title bar, account name under it
   document.querySelectorAll("[data-account]").forEach(e => e.textContent = SITE.donate.accountName || "");
