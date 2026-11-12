@@ -16,7 +16,7 @@
   const lines = Math.floor(mods.reduce((n, m) => n + (m.lines || 0), 0) / 1000) * 1000;
   document.querySelectorAll('[data-stat="lines"]').forEach(b => { b.dataset.count = lines; b.textContent = lines.toLocaleString("en-US") + "+"; });
 
-  // under each download button: file size · update date · tested game version · what changed
+  // under each download button: file size · update date · what changed
   const fmtSize = b => (b >= 1e6 ? Math.round(b / 1e6) : (b / 1e6).toFixed(1)) + " MB";
   const fmtDate = d => new Date(d).toLocaleDateString("th-TH", { day: "numeric", month: "short", year: "numeric" });
   function meta(id, size, date) {
@@ -24,7 +24,6 @@
     document.querySelectorAll(`[data-meta="${id}"]`).forEach(p => {
       p.textContent = "";
       const parts = [`ไฟล์ zip ${fmtSize(size)}`, `อัปเดต ${fmtDate(date)}`];
-      if (m.gameVer) parts.push(`ทดสอบกับเกม ${m.gameVer}`);
       parts.forEach((t, i) => {
         if (i) { const s = document.createElement("span"); s.className = "sep"; s.textContent = "·"; p.append(s); }
         p.append(t);
