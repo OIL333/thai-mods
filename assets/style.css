@@ -328,9 +328,10 @@ footer p { margin: 0; }
 .faq ul.fix { margin: 0 0 12px; padding-left: 20px; color: var(--muted); display: grid; gap: 6px; }
 .faq ul.fix b { color: var(--text); font-weight: 600; }
 
-/* ===== 18+ section: separate heading, cover blurred until the visitor confirms their age ===== */
-.adult-head { margin-top: 56px; scroll-margin-top: 76px; }
-.adult-head h2 { display: flex; align-items: center; gap: 10px; }
-.adult-head h2 .badge { font-size: .8rem; }
-.lead .jump { color: var(--accent); text-decoration: none; white-space: nowrap; }
-.lead .jump:hover { text-decoration: underline; }
+/* link box on the home page to the separate 18+ page */
+.adult-link { margin-top: 28px; display: flex; align-items: center; gap: 14px; padding: 16px 20px; border-radius: var(--radius);
+  background: var(--card); border: 1px dashed var(--line); color: var(--text); text-decoration: none; transition: border-color .2s, transform .2s; }
+.adult-link:hover { border-color: var(--accent2); transform: translateY(-2px); }
+.adult-link b { display: block; font-family: "Mitr", sans-serif; font-weight: 500; }
+.adult-link small { color: var(--muted); font-size: .88rem; }
+.adult-link .arrow { margin-left: auto; color: var(--muted); font-size: 1.3rem; }
