@@ -10,13 +10,6 @@
   if (newest && Date.now() - Date.parse(newest[1].added) < 30 * 864e5)
     document.querySelectorAll(`[data-new="${newest[0]}"]`).forEach(b => b.hidden = false);
 
-  // 18+ covers stay blurred until the visitor confirms their age (remembered on this device)
-  const adultOk = () => document.documentElement.classList.add("adult-ok");
-  try { if (localStorage.getItem("adult-ok") === "1") adultOk(); } catch (e) {}
-  document.querySelectorAll("[data-reveal]").forEach(b => b.addEventListener("click", () => {
-    adultOk(); try { localStorage.setItem("adult-ok", "1"); } catch (e) {}
-  }));
-
   // hero numbers come from the game list, so adding a game updates them
   const mods = Object.values(SITE.mods);
   document.querySelectorAll('[data-stat="games"]').forEach(b => { b.dataset.count = mods.length; b.textContent = mods.length; });
