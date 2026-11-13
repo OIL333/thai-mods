@@ -36,8 +36,8 @@ nav { display: flex; align-items: center; }
 nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: .95rem; white-space: nowrap; }
 nav a:hover { color: var(--text); }
 @media (max-width: 640px) { nav a.hide-sm, nav .long { display: none; } nav a { margin-left: 12px; } .brand { font-size: 1.05rem; gap: 6px; } .brand img { width: 28px; height: 28px; } .toggle { margin-left: 10px; } }
-/* phones narrower than 375px: logo only in the header so the nav still fits */
-@media (max-width: 374px) { header.top .brand { font-size: 0; gap: 0; } header.top .brand img { width: 30px; height: 30px; } }
+/* phones (up to ~460px, e.g. 390/414/430 iPhones): logo only in the header so the nav still fits */
+@media (max-width: 459px) { header.top .brand { font-size: 0; gap: 0; } header.top .brand img { width: 30px; height: 30px; } }
 @media (max-width: 480px) {
   .hero .stats { gap: 8px; flex-wrap: nowrap; }
   .hero .stats li { flex: 1 1 0; min-width: 0; padding: 8px 6px; }
