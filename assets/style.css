@@ -335,3 +335,9 @@ footer p { margin: 0; }
 .adult-link b { display: block; font-family: "Mitr", sans-serif; font-weight: 500; }
 .adult-link small { color: var(--muted); font-size: .88rem; }
 .adult-link .arrow { margin-left: auto; color: var(--muted); font-size: 1.3rem; }
+
+/* "อัปเดตล่าสุด" box under the games heading */
+.updates { margin: 0 0 22px; padding: 12px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); font-size: .92rem; }
+.updates b { font-family: "Mitr", sans-serif; font-weight: 500; display: block; margin-bottom: 4px; }
+.updates ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.updates time { color: var(--accent); font-weight: 600; margin-right: 4px; white-space: nowrap; }

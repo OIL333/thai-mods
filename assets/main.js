@@ -5,6 +5,21 @@
     document.querySelectorAll(`[data-ver="${id}"]`).forEach(b => b.textContent = "v" + m.version);
     document.querySelectorAll(`[data-store="${id}"]`).forEach(a => { if (m.store) a.href = m.store; else a.remove(); });
   }
+  // "อัปเดตล่าสุด" box on the home page (newest 3 from SITE.updates)
+  document.querySelectorAll("[data-updates]").forEach(box => {
+    const list = (SITE.updates || []).slice(0, 3);
+    if (!list.length) return;
+    const ul = box.querySelector("ul");
+    for (const u of list) {
+      const li = document.createElement("li");
+      const t = document.createElement("time");
+      t.dateTime = u.date;
+      t.textContent = new Date(u.date).toLocaleDateString("th-TH", { day: "numeric", month: "short" });
+      li.append(t, " " + u.text);
+      ul.append(li);
+    }
+    box.hidden = false;
+  });
   // "ใหม่" badge on the most recently added game, for 30 days after its first release
   const newest = Object.entries(SITE.mods).filter(([, m]) => m.added).sort((a, b) => Date.parse(b[1].added) - Date.parse(a[1].added))[0];
   if (newest && Date.now() - Date.parse(newest[1].added) < 30 * 864e5)

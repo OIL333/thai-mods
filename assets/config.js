@@ -3,6 +3,12 @@ window.SITE = {
   repo: "https://github.com/OIL333/thai-mods",
   // ต่อเกม: added = วันที่เปิดให้โหลดครั้งแรก (เกมที่ใหม่ที่สุดได้ป้าย "ใหม่" 30 วัน), lines = จำนวนข้อความที่แปล (รวมเป็นตัวเลขหน้าแรก),
   // gameVer = เวอร์ชันเกมที่ใช้ทดสอบ ใส่แค่ตัวเลข เช่น "1.0.18" (หน้าเว็บเติม v ให้; เว้นว่างถ้าไม่รู้), size/date = ค่าสำรอง (หน้าเว็บอ่านค่าจริงจาก GitHub release)
+  // อัปเดตล่าสุด (ใหม่สุดไว้บน หน้าแรกโชว์ 3 อัน) — เพิ่มทุกครั้งที่ออกเวอร์ชันใหม่
+  updates: [
+    { date: "2026-11-13", text: "Train45 v1.0.3 และ Yohane v1.0.4-beta: แก้คำแปลเล็กน้อย 2 จุด" },
+    { date: "2026-11-12", text: "เพิ่ม Love Live! Nijigasaki TOKIMEKI Roadmap to the Future ภาษาไทย" },
+    { date: "2026-11-12", text: "Train45 และ Yohane: โลโก้หน้าแรกเป็นภาษาไทย" },
+  ],
   mods: {
     yohanuma: {
       version: "1.0.4-beta", tag: "yohanuma-v1.0.4-beta", file: "Yohanuma-ThaiMod-v1.0.4-beta.zip",
