@@ -201,23 +201,32 @@
   const btn = document.getElementById("themeBtn");
   const apply = t => { if (t) document.documentElement.setAttribute("data-theme", t); else document.documentElement.removeAttribute("data-theme"); };
   try { apply(localStorage.getItem("theme")); } catch (e) {}
-  // theme switch: the whole page cross-fades to the new theme (View Transitions, timing in style.css);
-  // browsers without it fade the colours instead; reduced motion switches instantly
+  // theme switch: a solid layer in the new background colour fades in over the page, the theme swaps
+  // underneath, then the layer fades out. Only one layer's opacity animates (compositor only), so it stays
+  // smooth even with the blurred header and the decorative animations; the costly repaint happens while
+  // the page is covered. (A View Transitions cross-fade dropped frames here.) Reduced motion: instant.
+  let switching = false;
   if (btn) btn.onclick = () => {
+    if (switching) return;
     const root = document.documentElement;
     const cur = root.getAttribute("data-theme") ||
       (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
     const next = cur === "light" ? "dark" : "light";
-    const swap = () => {
-      apply(next); try { localStorage.setItem("theme", next); } catch (e) {}
-      if (!calm) btn.querySelectorAll("svg").forEach(s => s.animate(
-        { transform: ["rotate(-90deg) scale(.6)", "none"], opacity: [0, 1] }, { duration: 450, easing: "cubic-bezier(.4,0,.2,1)" }));
-    };
-    if (calm) return swap();
-    if (!document.startViewTransition) {
-      root.classList.add("theme-fade"); swap();
-      return setTimeout(() => root.classList.remove("theme-fade"), 450);
-    }
-    document.startViewTransition(swap).ready.catch(() => {});
+    const swap = () => { apply(next); try { localStorage.setItem("theme", next); } catch (e) {} };
+    if (calm || !document.body.animate) return swap();
+    switching = true;
+    const veil = document.createElement("div");
+    veil.className = "theme-veil";
+    veil.style.background = next === "light" ? "#f5f7fc" : "#0b1020";
+    document.body.append(veil);
+    const ease = "cubic-bezier(.4,0,.2,1)";
+    btn.querySelectorAll("svg").forEach(s => s.animate(
+      { transform: ["rotate(-90deg) scale(.6)", "none"], opacity: [0, 1] }, { duration: 560, easing: ease }));
+    veil.animate({ opacity: [0, 1] }, { duration: 220, easing: ease, fill: "forwards" }).finished.then(() => {
+      swap();
+      requestAnimationFrame(() => requestAnimationFrame(() =>
+        veil.animate({ opacity: [1, 0] }, { duration: 340, easing: ease, fill: "forwards" }).finished
+          .then(() => { veil.remove(); switching = false; })));
+    });
   };
 })();
