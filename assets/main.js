@@ -28,7 +28,7 @@
     document.querySelectorAll(`[data-meta="${id}"]`).forEach(p => {
       p.textContent = "";
       const parts = [`ไฟล์ zip ${fmtSize(size)}`, `อัปเดต ${fmtDate(date)}`];
-      if (m.gameVer) parts.push(`ทดสอบกับเกม ${m.gameVer}`);
+      if (m.gameVer) parts.push(`ทดสอบกับเกม v${m.gameVer}`);
       parts.forEach((t, i) => {
         if (i) { const s = document.createElement("span"); s.className = "sep"; s.textContent = "·"; p.append(s); }
         p.append(t);

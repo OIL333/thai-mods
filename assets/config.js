@@ -2,18 +2,18 @@
 window.SITE = {
   repo: "https://github.com/OIL333/thai-mods",
   // ต่อเกม: added = วันที่เปิดให้โหลดครั้งแรก (เกมที่ใหม่ที่สุดได้ป้าย "ใหม่" 30 วัน), lines = จำนวนข้อความที่แปล (รวมเป็นตัวเลขหน้าแรก),
-  // gameVer = เวอร์ชันเกมที่ใช้ทดสอบ (เว้นว่างถ้าไม่รู้), size/date = ค่าสำรอง (หน้าเว็บอ่านค่าจริงจาก GitHub release)
+  // gameVer = เวอร์ชันเกมที่ใช้ทดสอบ ใส่แค่ตัวเลข เช่น "1.0.18" (หน้าเว็บเติม v ให้; เว้นว่างถ้าไม่รู้), size/date = ค่าสำรอง (หน้าเว็บอ่านค่าจริงจาก GitHub release)
   mods: {
     yohanuma: {
       version: "1.0.3-beta", tag: "yohanuma-v1.0.3-beta", file: "Yohanuma-ThaiMod-v1.0.3-beta.zip",
       name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
-      added: "2026-11-10", lines: 6182, gameVer: "ver.1.0.18", size: 34397082, date: "2026-11-12",
+      added: "2026-11-10", lines: 6182, gameVer: "1.0.18", size: 34397082, date: "2026-11-12",
       store: "https://store.steampowered.com/app/2459750/",
     },
     train45: {
       version: "1.0.2", tag: "train45-v1.0.2", file: "Train45-ThaiMod-v1.0.2.zip",
       name: "Train45",
-      added: "2026-11-10", lines: 7462, gameVer: "v1.0.6.4", size: 380175, date: "2026-11-12",
+      added: "2026-11-10", lines: 7462, gameVer: "1.0.6.4", size: 380175, date: "2026-11-12",
       store: "https://store.steampowered.com/app/3711590/",
     },
     nijichizu: {
