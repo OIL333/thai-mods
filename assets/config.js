@@ -5,9 +5,9 @@ window.SITE = {
   // gameVer = เวอร์ชันเกมที่ใช้ทดสอบ ใส่แค่ตัวเลข เช่น "1.0.18" (หน้าเว็บเติม v ให้; เว้นว่างถ้าไม่รู้), size/date = ค่าสำรอง (หน้าเว็บอ่านค่าจริงจาก GitHub release)
   mods: {
     yohanuma: {
-      version: "1.0.5-beta", tag: "yohanuma-v1.0.5-beta", file: "Yohanuma-ThaiMod-v1.0.5-beta.zip",
+      version: "1.0.5", tag: "yohanuma-v1.0.5", file: "Yohanuma-ThaiMod-v1.0.5.zip",
       name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
-      added: "2026-11-10", lines: 6182, gameVer: "1.0.18", size: 34322723, date: "2026-11-16",
+      added: "2026-11-10", lines: 6182, gameVer: "1.0.18", size: 34322692, date: "2026-11-16",
       store: "https://store.steampowered.com/app/2459750/",
     },
     train45: {
@@ -17,9 +17,9 @@ window.SITE = {
       store: "https://store.steampowered.com/app/3711590/",
     },
     nijichizu: {
-      version: "1.0.2-beta", tag: "nijichizu-v1.0.2-beta", file: "Nijichizu-ThaiMod-v1.0.2-beta.zip",
+      version: "1.0.2", tag: "nijichizu-v1.0.2", file: "Nijichizu-ThaiMod-v1.0.2.zip",
       name: "Love Live! Nijigasaki High School Idol Club TOKIMEKI Roadmap to the Future",
-      added: "2026-11-12", lines: 14880, gameVer: "1.0.1", size: 46464814, date: "2026-11-16",
+      added: "2026-11-12", lines: 14880, gameVer: "1.0.1", size: 46464784, date: "2026-11-16",
       store: "https://store.steampowered.com/app/3213690/",
     },
   },
