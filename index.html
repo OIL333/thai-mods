@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TripleT Translate</title>
 <meta name="google-site-verification" content="Jg-V40jwx5koj7jmOeaeyQnu1Qo_33CfmXrk3PlsS3E">
-<meta name="description" content="ม็อดภาษาไทยแจกฟรี สำหรับ Love Live! Nijigasaki TOKIMEKI Roadmap to the Future, Yohane the Parhelion - NUMAZU in the MIRAGE - และ Train45 ติดตั้งไม่กี่ขั้นตอน">
+<meta name="description" content="ม็อดภาษาไทยแจกฟรี สำหรับ Aeruta, Love Live! Nijigasaki TOKIMEKI Roadmap to the Future, Yohane the Parhelion - NUMAZU in the MIRAGE - และ Train45 ติดตั้งไม่กี่ขั้นตอน">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
@@ -67,6 +67,47 @@
       <p class="lead">ต้องมีเกมแท้จาก Steam ก่อนนะ ม็อดนี้มีแค่คำแปล ไม่ได้แถมตัวเกม</p>
       <div class="mods">
 
+
+        <article class="mod" id="aeruta">
+          <div class="top">
+            <div class="side">
+              <div class="shot"><img src="assets/cover-aeruta.jpg?v=ff5ea99a" alt="ภาพปกเกม Aeruta" width="460" height="215" loading="lazy"></div>
+              <a class="store" data-store="aeruta" href="#" target="_blank" rel="noopener">🎮 ดูเกมนี้บน Steam ↗</a>
+            </div>
+            <div class="body">
+              <h3>Aeruta</h3>
+              <div class="badges">
+                <span class="badge new" data-new="aeruta" hidden>ใหม่</span>
+                <span class="badge" data-ver="aeruta"></span>
+                <span class="badge ai">🤖 แปลด้วย AI</span>
+              </div>
+              <ul>
+                <li>เนื้อเรื่อง บทพูด เมนู ไอเทม และคำอธิบายต่าง ๆ เป็นภาษาไทย (กว่า 8,500 บรรทัด)</li>
+                <li>โลโก้เกมหน้าแรกเป็นภาษาไทย</li>
+              </ul>
+              <div class="actions">
+                <a class="btn primary" data-dl="aeruta" href="#"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.6-4.6M12 15l4.6-4.6M5 19.5h14"/></svg>ดาวน์โหลด</a>
+                <button class="btn" type="button" data-open="guide-aeruta">วิธีติดตั้ง<svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+              </div>
+              <p class="dl-meta" data-meta="aeruta"></p>
+            </div>
+          </div>
+          <details class="guide" id="guide-aeruta">
+            <summary class="sr-only">วิธีติดตั้ง</summary>
+            <ol class="steps">
+              <li>กดปุ่ม <b>ดาวน์โหลด</b> ด้านบน จะได้ไฟล์ zip มา 1 ไฟล์</li>
+              <li>เปิดโฟลเดอร์เกม: เข้า Steam แล้ว <b>คลิกขวาที่ชื่อเกม</b> → <b>จัดการ</b> → <b>เรียกดูไฟล์ในเครื่อง</b>
+                จะมีโฟลเดอร์เด้งขึ้นมา ข้างในมีไฟล์ <code>Aeruta.exe</code></li>
+              <li><b>ดับเบิลคลิก</b>เปิดไฟล์ zip ที่โหลดมา → กด <b>Ctrl + A</b> เพื่อเลือกทั้งหมด → <b>ลากไปวาง</b>ในโฟลเดอร์เกม
+                ถ้าขึ้นถามว่าจะแทนที่ไฟล์ไหม ให้กด <b>แทนที่</b></li>
+              <li>เช็กให้ชัวร์: ในโฟลเดอร์เกมต้องเห็นโฟลเดอร์ <code>BepInEx</code> กับไฟล์ <code>winhttp.dll</code> อยู่ข้าง ๆ <code>Aeruta.exe</code>
+                (ถ้ามันไปอยู่ในโฟลเดอร์ย่อยอีกชั้น ให้ย้ายออกมาไว้ข้าง ๆ <code>Aeruta.exe</code>)</li>
+              <li>เข้าเกมผ่าน Steam ตามปกติ <b>ครั้งแรกจะเปิดช้าประมาณ 1–3 นาที</b> รอได้เลย ไม่ได้ค้าง (ต้องต่อเน็ตแค่ครั้งแรก ครั้งต่อไปเล่นแบบไม่มีเน็ตได้)</li>
+              <li>ในเกม ไปที่การตั้งค่า แล้วตั้งภาษาเป็น <b>English</b> ข้อความจะกลายเป็นภาษาไทย 🎉</li>
+            </ol>
+            <p class="note uninstall">อยากเอาม็อดออก: ดับเบิลคลิกไฟล์ <code>AerutaThai_uninstall.bat</code> ในโฟลเดอร์เกม</p>
+          </details>
+        </article>
 
         <article class="mod" id="nijichizu">
           <div class="top">
@@ -177,9 +218,9 @@
         <details>
           <summary>ติดตั้งแล้ว แต่ในเกมยังไม่เป็นภาษาไทย</summary>
           <ul class="fix">
-            <li><b>เช็กภาษาในเกม:</b> Train45 ให้เลือก "ภาษาไทย" ที่ Settings → Display → Language ส่วน Yohane กับ Nijigasaki ให้ตั้งเป็น <b>English</b></li>
+            <li><b>เช็กภาษาในเกม:</b> Train45 ให้เลือก "ภาษาไทย" ที่ Settings → Display → Language ส่วน Yohane, Nijigasaki และ Aeruta ให้ตั้งเป็น <b>English</b></li>
             <li><b>เช็กที่วางไฟล์:</b> โฟลเดอร์ <code>BepInEx</code> กับไฟล์ <code>winhttp.dll</code> ต้องอยู่ข้าง ๆ ไฟล์ .exe ของเกม ไม่ใช่ในโฟลเดอร์ย่อย (Train45 ให้กด <code>install.bat</code> อีกรอบ)</li>
-            <li><b>รอครั้งแรก:</b> Yohane กับ Nijigasaki เปิดครั้งแรกจะช้า 1–3 นาที และต้องต่อเน็ตแค่ครั้งแรก หลังจากนั้นเล่นแบบไม่มีเน็ตได้</li>
+            <li><b>รอครั้งแรก:</b> Yohane, Nijigasaki และ Aeruta เปิดครั้งแรกจะช้า 1–3 นาที และต้องต่อเน็ตแค่ครั้งแรก หลังจากนั้นเล่นแบบไม่มีเน็ตได้</li>
             <li><b>แอนตี้ไวรัส:</b> ถ้ามันลบ <code>winhttp.dll</code> ไป ให้อนุญาตไฟล์นั้นแล้วติดตั้งใหม่</li>
           </ul>
           <p>ยังไม่ได้อีก บอกได้ที่<a href="report.html">หน้าแจ้งปัญหา</a> เดี๋ยวช่วยดูให้</p>
@@ -210,7 +251,7 @@
   </div>
 </footer>
 
-<script src="assets/config.js?v=349c23ac"></script>
+<script src="assets/config.js?v=58148974"></script>
 <script src="assets/main.js?v=c938d776"></script>
 </body>
 </html>

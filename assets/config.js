@@ -22,6 +22,12 @@ window.SITE = {
       added: "2026-11-12", lines: 14880, gameVer: "1.0.1", size: 46464784, date: "2026-11-16",
       store: "https://store.steampowered.com/app/3213690/",
     },
+    aeruta: {
+      version: "1.0.0", tag: "aeruta-v1.0.0", file: "Aeruta-ThaiMod-v1.0.0.zip",
+      name: "Aeruta",
+      added: "2026-11-16", lines: 8565, gameVer: "1.2.2", size: 35010794, date: "2026-11-16",
+      store: "https://store.steampowered.com/app/2286780/",
+    },
   },
   donate: {
     accountName: "กษิดิ์เดช ปทุมมาศ",
