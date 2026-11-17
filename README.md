@@ -15,6 +15,8 @@
 
 วิธีติดตั้งอยู่ในหน้าเว็บและในไฟล์ README ที่อยู่ใน zip ของแต่ละเกม
 
+แจกปกเกมภาษาไทยสำหรับคลัง Steam (ปกแนวตั้ง + โลโก้ไทย 5 เกม): [Releases](https://github.com/OIL333/thai-mods/releases/tag/steam-covers-v1.0)
+
 ## แจ้งปัญหา
 ใช้ [หน้าแจ้งปัญหา / เสนอแนะ](https://oil333.github.io/thai-mods/report.html) หรือเปิด [Issue](https://github.com/OIL333/thai-mods/issues/new/choose)
 
