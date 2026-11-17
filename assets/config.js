@@ -28,6 +28,12 @@ window.SITE = {
       added: "2026-11-16", lines: 8565, gameVer: "1.2.2", size: 35010794, date: "2026-11-16",
       store: "https://store.steampowered.com/app/2286780/",
     },
+    vlover: {
+      version: "1.0.0", tag: "vlover-v1.0.0", file: "VLover-ThaiMod-v1.0.0.zip",
+      name: "V-LOVER!",
+      added: "2026-11-17", lines: 8164, gameVer: "0.1.09", size: 38319034, date: "2026-11-17",
+      store: "https://store.steampowered.com/app/3044740/",
+    },
   },
   donate: {
     accountName: "กษิดิ์เดช ปทุมมาศ",

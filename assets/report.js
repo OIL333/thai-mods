@@ -38,7 +38,7 @@
         ],
       };
     }
-    const short = { yohanuma: "Yohanuma", nijichizu: "Nijichizu", aeruta: "Aeruta" }[$("game").value] || gameName();
+    const short = { yohanuma: "Yohanuma", nijichizu: "Nijichizu", aeruta: "Aeruta", vlover: "V-LOVER" }[$("game").value] || gameName();
     return {
       kind: "แจ้งปัญหา",
       title: `[${short}] ${radio("kind")}: ${val("where")}`.slice(0, 120),
