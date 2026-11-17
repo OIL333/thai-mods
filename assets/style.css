@@ -166,16 +166,18 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 
 /* ===== Steam covers: pick a game's cover (or all of them); covers on the left, what's inside + buttons on the right ===== */
 .mod.covers { padding: 22px 22px 0; }
-/* covers grow into the free width (max 250px each, centred), the info column keeps a fixed width: 3 or 2 games both fill the card */
-.covers-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 20px 32px; align-items: center; padding-bottom: 22px; }
-.cover-grid { display: grid; grid-template-columns: repeat(var(--n, 3), minmax(0, 250px)); gap: 16px; justify-content: center; }
+/* covers are the same size on both pages (190px); covers + info sit together in the middle of the card, so 2 games
+   (adult.html) get even space on both sides instead of an empty right side */
+.covers-layout { display: grid; grid-template-columns: auto minmax(0, 400px); justify-content: center; gap: 20px 32px; align-items: center; padding-bottom: 22px; }
+.cover-grid { display: grid; grid-template-columns: repeat(var(--n, 3), 190px); gap: 16px; }
 .covers-info { display: flex; flex-direction: column; gap: 10px; }
 .covers-info h3 { font-size: 1.1rem; }
+.dl-meta.covers-more a { white-space: normal; }
 .mod.covers .actions { margin: 4px 0 0; padding: 0; }
 .mod.covers details.guide { margin: 0 -22px; }
-@media (max-width: 960px) {
-  .covers-layout { grid-template-columns: 1fr; }
-  .cover-grid { grid-template-columns: repeat(var(--n, 3), minmax(0, 220px)); justify-content: start; }
+@media (max-width: 1000px) {
+  .covers-layout { grid-template-columns: minmax(0, 1fr); justify-content: stretch; }
+  .cover-grid { grid-template-columns: repeat(var(--n, 3), minmax(0, 190px)); }
 }
 @media (max-width: 800px) {
   .mod.covers { padding: 16px 16px 0; }
