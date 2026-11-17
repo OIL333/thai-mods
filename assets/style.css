@@ -84,6 +84,10 @@ nav a:hover { color: var(--text); }
   .mod.in:hover { transform: translateY(-5px); box-shadow: 0 18px 44px rgba(0,0,0,.35); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
   .mod .shot img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
   .mod:hover .shot img { transform: scale(1.05); }
+  .mod.covers.in:hover { transform: none; box-shadow: none; }
+  .cover-pick { transition: transform .25s cubic-bezier(.2,.7,.2,1), border-color .2s, box-shadow .25s; }
+  .cover-pick .art img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .cover-pick:hover .art img { transform: scale(1.05); }
   .qr-card { transition: transform .3s, box-shadow .3s; }
   .qr-card:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: 0 16px 36px rgba(0,0,0,.35); }
 }
@@ -117,7 +121,8 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 .mods { display: grid; gap: 28px; }
 .mod { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; scroll-margin-top: 76px; }
 /* cover shown whole (Steam capsule 460x215), never cropped */
-.mod .top { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); align-items: start; }
+/* the shorter column (cover + Steam link, or the text) sits in the middle, so a long description leaves no empty corner */
+.mod .top { display: grid; grid-template-columns: minmax(0, 460px) minmax(0, 1fr); align-items: center; }
 @media (max-width: 800px) { .mod .top { grid-template-columns: 1fr; } }
 .mod .side { padding: 20px 0 20px 20px; display: grid; gap: 10px; }
 @media (max-width: 800px) { .mod .side { padding: 16px 16px 0; } }
@@ -158,6 +163,37 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
   background: linear-gradient(135deg, var(--accent), var(--accent2));
 }
 .uninstall { margin: 0 0 18px; }
+
+/* ===== Steam covers: pick a game's cover (or all of them); covers on the left, what's inside + buttons on the right ===== */
+.mod.covers { padding: 22px 22px 0; }
+.covers-layout { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px 28px; align-items: center; padding-bottom: 22px; }
+.cover-grid { display: grid; grid-template-columns: repeat(var(--n, 3), 190px); gap: 16px; }
+.covers-info { display: flex; flex-direction: column; gap: 10px; }
+.covers-info h3 { font-size: 1.1rem; }
+.mod.covers .actions { margin: 4px 0 0; padding: 0; }
+.mod.covers details.guide { margin: 0 -22px; }
+@media (max-width: 900px) {
+  .covers-layout { grid-template-columns: 1fr; }
+  .cover-grid { grid-template-columns: repeat(var(--n, 3), minmax(0, 190px)); }
+}
+@media (max-width: 800px) {
+  .mod.covers { padding: 16px 16px 0; }
+  .cover-grid { gap: 12px; }
+  .mod.covers details.guide { margin: 0 -16px; padding: 18px 16px 0; }
+}
+@media (max-width: 520px) { .cover-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cover-pick {
+  display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--line); border-radius: 14px;
+  overflow: hidden; text-decoration: none; color: var(--text);
+}
+.cover-pick:hover, .cover-pick:focus-visible { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 28px rgba(0,0,0,.3); }
+.cover-pick .art { position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; background: var(--card); }
+.cover-pick .art img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.cover-pick .art .badge { position: absolute; top: 8px; left: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
+.cover-pick .name { padding: 10px 12px 0; font-weight: 600; line-height: 1.35; }
+.cover-pick .get { display: flex; flex-wrap: wrap; align-items: center; gap: 0 6px; padding: 2px 12px 12px; color: var(--accent); font-size: .84rem; font-weight: 600; }
+.cover-pick .get .size { color: var(--muted); font-weight: 500; white-space: nowrap; }
+.cover-pick .get .ico { width: 1.1em; height: 1.1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 code { background: var(--bg2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .9em; word-break: break-all; }
 .steps code { background: var(--card); }
 
@@ -321,7 +357,6 @@ footer p { margin: 0; }
 .dl-meta a { color: var(--accent); text-decoration: none; white-space: nowrap; }
 .dl-meta a:hover { text-decoration: underline; }
 .dl-meta .sep { opacity: .5; margin: 0 6px; }
-.badge.new { color: #fff; border: 0; background: linear-gradient(90deg, var(--accent), var(--accent2)); font-weight: 600; }
 /* troubleshooting list inside an FAQ answer */
 .faq ul.fix { margin: 0 0 12px; padding-left: 20px; color: var(--muted); display: grid; gap: 6px; }
 .faq ul.fix b { color: var(--text); font-weight: 600; }

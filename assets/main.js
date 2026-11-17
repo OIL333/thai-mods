@@ -5,11 +5,6 @@
     document.querySelectorAll(`[data-ver="${id}"]`).forEach(b => b.textContent = "v" + m.version);
     document.querySelectorAll(`[data-store="${id}"]`).forEach(a => { if (m.store) a.href = m.store; else a.remove(); });
   }
-  // "ใหม่" badge on the most recently added game, for 30 days after its first release
-  const newest = Object.entries(SITE.mods).filter(([, m]) => m.added).sort((a, b) => Date.parse(b[1].added) - Date.parse(a[1].added))[0];
-  if (newest && Date.now() - Date.parse(newest[1].added) < 30 * 864e5)
-    document.querySelectorAll(`[data-new="${newest[0]}"]`).forEach(b => b.hidden = false);
-
   // old links like index.html#train45 (18+ games moved to adult.html) still land on the right card
   if (location.hash && !document.getElementById(location.hash.slice(1)) && document.querySelector('a[href="adult.html"]'))
     location.replace("adult.html" + location.hash);
