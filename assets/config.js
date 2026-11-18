@@ -11,9 +11,9 @@ window.SITE = {
       store: "https://store.steampowered.com/app/2459750/",
     },
     train45: {
-      version: "1.0.4", tag: "train45-v1.0.4", file: "Train45-ThaiMod-v1.0.4.zip",
+      version: "1.0.5", tag: "train45-v1.0.5", file: "Train45-ThaiMod-v1.0.5.zip",
       name: "Train45",
-      added: "2026-11-10", lines: 7462, gameVer: "1.0.6.4", size: 561856, date: "2026-11-16",
+      added: "2026-11-10", lines: 7462, gameVer: "1.0.6.4", size: 550039, date: "2026-11-18",
       store: "https://store.steampowered.com/app/3711590/",
     },
     nijichizu: {
