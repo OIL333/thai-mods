@@ -5,9 +5,9 @@ window.SITE = {
   // gameVer = เวอร์ชันเกมที่ใช้ทดสอบ ใส่แค่ตัวเลข เช่น "1.0.18" (หน้าเว็บเติม v ให้; เว้นว่างถ้าไม่รู้), size/date = ค่าสำรอง (หน้าเว็บอ่านค่าจริงจาก GitHub release)
   mods: {
     yohanuma: {
-      version: "1.0.5", tag: "yohanuma-v1.0.5", file: "Yohanuma-ThaiMod-v1.0.5.zip",
+      version: "1.0.7", tag: "yohanuma-v1.0.7", file: "Yohanuma-ThaiMod-v1.0.7.zip",
       name: "Yohane the Parhelion - NUMAZU in the MIRAGE -",
-      added: "2026-11-10", lines: 6182, gameVer: "1.0.18", size: 34322692, date: "2026-11-16",
+      added: "2026-11-10", lines: 6182, gameVer: "1.0.18", size: 34531189, date: "2026-11-22",
       store: "https://store.steampowered.com/app/2459750/",
     },
     train45: {

@@ -8,7 +8,7 @@
 | เกม | สถานะ | ดาวน์โหลด |
 |---|---|---|
 | Train45 (18+) | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/train45-v1.0.5) |
-| Yohane the Parhelion - NUMAZU in the MIRAGE - | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/yohanuma-v1.0.5) |
+| Yohane the Parhelion - NUMAZU in the MIRAGE - | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/yohanuma-v1.0.7) |
 | Love Live! Nijigasaki High School Idol Club TOKIMEKI Roadmap to the Future | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/nijichizu-v1.0.2) |
 | Aeruta | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/aeruta-v1.0.0) |
 | V-LOVER! (18+) | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/vlover-v1.0.0) |
