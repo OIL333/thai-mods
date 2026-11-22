@@ -29,9 +29,9 @@ window.SITE = {
       store: "https://store.steampowered.com/app/2286780/",
     },
     vlover: {
-      version: "1.0.0", tag: "vlover-v1.0.0", file: "VLover-ThaiMod-v1.0.0.zip",
+      version: "1.0.1", tag: "vlover-v1.0.1", file: "VLover-ThaiMod-v1.0.1.zip",
       name: "V-LOVER!",
-      added: "2026-11-17", lines: 8164, gameVer: "0.1.09", size: 38319034, date: "2026-11-17",
+      added: "2026-11-17", lines: 8164, gameVer: "0.1.09", size: 38517184, date: "2026-11-23",
       store: "https://store.steampowered.com/app/3044740/",
     },
   },
