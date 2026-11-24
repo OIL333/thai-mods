@@ -5,6 +5,16 @@
     document.querySelectorAll(`[data-ver="${id}"]`).forEach(b => b.textContent = "v" + m.version);
     document.querySelectorAll(`[data-store="${id}"]`).forEach(a => { if (m.store) a.href = m.store; else a.remove(); });
   }
+  // optional warning on a game card (config.js notice, e.g. the game updated and the mod doesn't work with it yet)
+  for (const [id, m] of Object.entries(SITE.mods)) {
+    const card = m.notice && document.getElementById(id);
+    const actions = card && card.querySelector(".body .actions");
+    if (!actions) continue;
+    const p = document.createElement("p"); p.className = "mod-notice"; p.setAttribute("role", "note");
+    p.innerHTML = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.8 2.6 20h18.8L12 3.8Zm0 6.2v4.6m0 2.8v.1"/></svg><span></span>';
+    p.querySelector("span").textContent = m.notice;
+    actions.before(p);
+  }
   // old links like index.html#train45 (18+ games moved to adult.html) still land on the right card
   if (location.hash && !document.getElementById(location.hash.slice(1)) && document.querySelector('a[href="adult.html"]'))
     location.replace("adult.html" + location.hash);
