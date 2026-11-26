@@ -40,6 +40,13 @@ window.SITE = {
       store: "https://store.steampowered.com/app/3044740/",
       notice: "",
     },
+    ijwtbs: {
+      version: "1.0.0", tag: "ijwtbs-v1.0.0", file: "IJWTBS-ThaiMod-v1.0.0.zip",
+      name: "I Just Want to be Single!! - Season One",
+      added: "2026-11-26", lines: 3880, gameVer: "1.1.0", size: 1393496, date: "2026-11-26",
+      store: "https://store.steampowered.com/app/1703610/",
+      notice: "",
+    },
   },
   donate: {
     accountName: "กษิดิ์เดช ปทุมมาศ",
