@@ -46,8 +46,9 @@
     });
   }
   for (const [id, m] of Object.entries(SITE.mods)) if (m.size) meta(id, m.size, m.date);
-  // the live size/date of each release (config values stay if GitHub can't be reached)
-  if (document.querySelector("[data-meta]") && window.fetch) {
+  // the live size/date of each release + Steam cover zips (static values stay if GitHub can't be reached)
+  const coverLinks = document.querySelectorAll('a[href*="/releases/download/steam-covers-v1.0/"]');
+  if ((document.querySelector("[data-meta]") || coverLinks.length) && window.fetch) {
     fetch(SITE.repo.replace("https://github.com/", "https://api.github.com/repos/") + "/releases?per_page=30")
       .then(r => r.ok ? r.json() : [])
       .then(rels => {
@@ -55,6 +56,15 @@
           const rel = rels.find(r => r.tag_name === m.tag);
           const asset = rel && rel.assets.find(a => a.name === m.file);
           if (asset) meta(id, asset.size, rel.published_at);
+        }
+        const cov = rels.find(r => r.tag_name === "steam-covers-v1.0");
+        if (cov && cov.assets) {
+          const byName = Object.fromEntries(cov.assets.map(a => [a.name, a.size]));
+          coverLinks.forEach(a => {
+            const size = byName[a.href.split("/").pop()];
+            const slot = size && a.querySelector(".size, [data-cover-size]");
+            if (slot) slot.textContent = (size / 1e6).toFixed(1) + " MB";
+          });
         }
       }).catch(() => {});
   }

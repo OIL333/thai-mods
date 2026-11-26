@@ -172,12 +172,23 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 
 /* ===== Steam covers: pick a game's cover (or all of them); covers on the left, what's inside + buttons on the right ===== */
 .mod.covers { padding: 22px 22px 0; }
-/* covers are the same size on both pages (190px); covers + info sit together in the middle of the card, so 2 games
-   (adult.html) get even space on both sides instead of an empty right side */
+/* covers are the same size on both pages (190px); 2-3 games (adult.html) sit beside the info,
+   while 4+ games (.wide on index.html) use full card width in centered 190px rows above a balanced 2-column info bar */
 .covers-layout { display: grid; grid-template-columns: auto minmax(0, 400px); justify-content: center; gap: 20px 32px; align-items: center; padding-bottom: 22px; }
 .cover-grid { display: grid; grid-template-columns: repeat(var(--n, 3), 190px); gap: 16px; }
 .covers-info { display: flex; flex-direction: column; gap: 10px; }
 .covers-info h3 { font-size: 1.1rem; }
+.covers-layout.wide { grid-template-columns: minmax(0, 1fr); justify-content: stretch; gap: 22px; }
+.covers-layout.wide .cover-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.covers-layout.wide .cover-pick { flex: 0 0 190px; }
+.covers-layout.wide .covers-info {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 10px 28px;
+  padding-top: 18px; border-top: 1px solid var(--line);
+}
+.covers-layout.wide .covers-list { display: flex; flex-direction: column; gap: 6px; }
+.covers-layout.wide .covers-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; text-align: right; }
+.covers-layout.wide .covers-cta .actions { justify-content: flex-end; margin: 0; }
+.covers-layout.wide .covers-cta .dl-meta { justify-content: flex-end; }
 .dl-meta.covers-more a { white-space: normal; }
 .mod.covers .actions { margin: 4px 0 0; padding: 0; }
 .mod.covers details.guide { margin: 0 -22px; }
@@ -187,10 +198,16 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 }
 @media (max-width: 800px) {
   .mod.covers { padding: 16px 16px 0; }
-  .cover-grid { gap: 12px; }
+  .cover-grid, .covers-layout.wide .cover-grid { gap: 12px; }
+  .covers-layout.wide .covers-info { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .covers-layout.wide .covers-cta { align-items: flex-start; text-align: left; }
+  .covers-layout.wide .covers-cta .actions, .covers-layout.wide .covers-cta .dl-meta { justify-content: flex-start; }
   .mod.covers details.guide { margin: 0 -16px; padding: 18px 16px 0; }
 }
-@media (max-width: 520px) { .cover-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) {
+  .cover-grid, .covers-layout.wide .cover-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .covers-layout.wide .cover-pick { flex: none; width: auto; }
+}
 .cover-pick {
   display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--line); border-radius: 14px;
   overflow: hidden; text-decoration: none; color: var(--text);
@@ -200,7 +217,7 @@ section .lead { color: var(--muted); margin: 0 0 28px; }
 .cover-pick .art img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .cover-pick .art .badge { position: absolute; top: 8px; left: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.35); }
 .cover-pick .name { padding: 10px 12px 0; font-weight: 600; line-height: 1.35; }
-.cover-pick .get { display: flex; flex-wrap: wrap; align-items: center; gap: 0 6px; padding: 2px 12px 12px; color: var(--accent); font-size: .84rem; font-weight: 600; }
+.cover-pick .get { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 0 6px; padding: 4px 12px 12px; color: var(--accent); font-size: .84rem; font-weight: 600; }
 .cover-pick .get .size { color: var(--muted); font-weight: 500; white-space: nowrap; }
 .cover-pick .get .ico { width: 1.1em; height: 1.1em; flex: none; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 code { background: var(--bg2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; font-size: .9em; word-break: break-all; }
