@@ -47,7 +47,7 @@
       };
     }
     const short = { train45: "Train45", yohanuma: "Yohanuma", nijichizu: "Nijichizu",
-                    aeruta: "Aeruta", vlover: "V-LOVER", ijwtbs: "IJWTBS" }[$("game").value] || gameName();
+                    aeruta: "Aeruta", vlover: "V-LOVER", ijwtbs: "IJWTBS", va11halla: "VA-11 Hall-A" }[$("game").value] || gameName();
     return {
       kind: "แจ้งปัญหา",
       title: `[${short}] ${radio("kind")}: ${val("where")}`.slice(0, 120),

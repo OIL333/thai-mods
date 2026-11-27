@@ -47,6 +47,13 @@ window.SITE = {
       store: "https://store.steampowered.com/app/1703610/",
       notice: "",
     },
+    va11halla: {
+      version: "1.0.0", tag: "va11halla-v1.0.0", file: "VA11HallA-ThaiMod-v1.0.0.zip",
+      name: "VA-11 Hall-A: Cyberpunk Bartender Action",
+      added: "2026-11-27", lines: 18150, gameVer: "1.2.3.0", size: 842422, date: "2026-11-27",
+      store: "https://store.steampowered.com/app/447530/",
+      notice: "",
+    },
   },
   donate: {
     accountName: "กษิดิ์เดช ปทุมมาศ",
