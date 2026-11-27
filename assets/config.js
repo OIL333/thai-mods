@@ -54,6 +54,13 @@ window.SITE = {
       store: "https://store.steampowered.com/app/447530/",
       notice: "",
     },
+    kindredspirits: {
+      version: "1.0.0", tag: "kindredspirits-v1.0.0", file: "KindredSpirits-ThaiMod-v1.0.0.zip",
+      name: "Kindred Spirits on the Roof",
+      added: "2026-11-28", lines: 28647, gameVer: "1.0.3", size: 2873171, date: "2026-11-28",
+      store: "https://store.steampowered.com/app/402620/",
+      notice: "",
+    },
   },
   donate: {
     accountName: "กษิดิ์เดช ปทุมมาศ",

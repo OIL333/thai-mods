@@ -14,10 +14,11 @@
 | V-LOVER! (18+) | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/vlover-v1.0.1) |
 | I Just Want to be Single!! - Season One | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/ijwtbs-v1.0.0) |
 | VA-11 Hall-A: Cyberpunk Bartender Action | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/va11halla-v1.0.0) |
+| Kindred Spirits on the Roof (18+) | พร้อมเล่น | [Releases](https://github.com/OIL333/thai-mods/releases/tag/kindredspirits-v1.0.0) |
 
 วิธีติดตั้งอยู่ในหน้าเว็บและในไฟล์ README ที่อยู่ใน zip ของแต่ละเกม
 
-แจกปกเกมภาษาไทยสำหรับคลัง Steam (ปกแนวตั้ง + โลโก้ไทย 7 เกม): [Releases](https://github.com/OIL333/thai-mods/releases/tag/steam-covers-v1.0)
+แจกปกเกมภาษาไทยสำหรับคลัง Steam (ปกแนวตั้ง + โลโก้ไทย 8 เกม): [Releases](https://github.com/OIL333/thai-mods/releases/tag/steam-covers-v1.0)
 
 ## แจ้งปัญหา
 ใช้ [หน้าแจ้งปัญหา / เสนอแนะ](https://oil333.github.io/thai-mods/report.html) หรือเปิด [Issue](https://github.com/OIL333/thai-mods/issues/new/choose)
