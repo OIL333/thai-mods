@@ -1,15 +1,18 @@
 :root {
+  color-scheme: dark;
   --bg: #0b1020; --bg2: #11182e; --card: #151d36; --line: #263157;
   --text: #e8ecf8; --muted: #9aa6c8; --accent: #4cc9f0; --accent2: #f72585; --tea: #7bc96f; --ok: #38d39f; --warn: #ffb703;
   --radius: 18px;
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
+    color-scheme: light;
     --bg: #f5f7fc; --bg2: #e9eef9; --card: #ffffff; --line: #d6ddef;
     --text: #141a2e; --muted: #56607d; --accent: #076fa8; --accent2: #d0186a; --tea: #2f7428; --ok: #11785a; --warn: #8a5d00;
   }
 }
 :root[data-theme="light"] {
+  color-scheme: light;
   --bg: #f5f7fc; --bg2: #e9eef9; --card: #ffffff; --line: #d6ddef;
   --text: #141a2e; --muted: #56607d; --accent: #076fa8; --accent2: #d0186a; --tea: #2f7428; --ok: #11785a; --warn: #8a5d00;
 }
@@ -327,7 +330,8 @@ footer p { margin: 0; }
   width: 100%; font: inherit; color: var(--text); background: var(--bg2); border: 1px solid var(--line);
   border-radius: 12px; padding: 10px 12px;
 }
-.form textarea { min-height: 110px; resize: vertical; }
+.form textarea { min-height: 84px; resize: vertical; }
+.form textarea#idea { min-height: 110px; }
 .form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent); border-color: transparent; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 @media (max-width: 640px) { .row2 { grid-template-columns: 1fr; } }
@@ -341,6 +345,7 @@ footer p { margin: 0; }
 .msg:empty { display: none; }
 .form > .hint { margin: -8px 0 0; color: var(--muted); font-size: .88rem; }
 .msg.err { color: var(--accent2); }
+.msg a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; }
 .tips { color: var(--muted); font-size: .93rem; margin: 0; padding-left: 20px; }
 
 /* bank account card (exact same square body size as the QR cards) */

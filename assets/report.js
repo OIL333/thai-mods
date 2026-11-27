@@ -7,9 +7,17 @@
   const key = (SITE.report && SITE.report.web3formsKey) || "";
   let mode = "bug";
 
+  const gameSel = $("game");
+  for (const [id, m] of Object.entries(SITE.mods || {})) {
+    if (!gameSel.querySelector(`option[value="${id}"]`)) {
+      const opt = document.createElement("option");
+      opt.value = id; opt.textContent = m.name || id;
+      gameSel.append(opt);
+    }
+  }
   const params = new URLSearchParams(location.search);
   const q = params.get("game");
-  if (q && SITE.mods[q]) $("game").value = q;
+  if (q && SITE.mods[q]) gameSel.value = q;
 
   function setMode(m) {
     mode = m;
@@ -38,7 +46,8 @@
         ],
       };
     }
-    const short = { yohanuma: "Yohanuma", nijichizu: "Nijichizu", aeruta: "Aeruta", vlover: "V-LOVER" }[$("game").value] || gameName();
+    const short = { train45: "Train45", yohanuma: "Yohanuma", nijichizu: "Nijichizu",
+                    aeruta: "Aeruta", vlover: "V-LOVER", ijwtbs: "IJWTBS" }[$("game").value] || gameName();
     return {
       kind: "แจ้งปัญหา",
       title: `[${short}] ${radio("kind")}: ${val("where")}`.slice(0, 120),
@@ -58,22 +67,37 @@
 
   function check() {
     if (mode === "idea") {
-      if (!radio("topic")) return "เลือกก่อนว่าเป็นเรื่องอะไร";
-      if (!val("idea")) return "เล่ารายละเอียดหน่อยนะ";
-      return "";
+      if (!radio("topic")) return { text: "เลือกก่อนว่าเป็นเรื่องอะไร", el: form.querySelector('input[name="topic"]') };
+      if (!val("idea")) return { text: "เล่ารายละเอียดหน่อยนะ", el: $("idea") };
+      return null;
     }
-    if (!$("game").value) return "เลือกเกมก่อนนะ";
-    if (!radio("kind")) return "เลือกว่าเป็นปัญหาแบบไหนก่อนนะ";
-    if (!val("where")) return "บอกหน่อยว่าเจอตรงไหนในเกม";
-    return "";
+    if (!$("game").value) return { text: "เลือกเกมก่อนนะ", el: $("game") };
+    if (!radio("kind")) return { text: "เลือกว่าเป็นปัญหาแบบไหนก่อนนะ", el: form.querySelector('input[name="kind"]') };
+    if (!val("where")) return { text: "บอกหน่อยว่าเจอตรงไหนในเกม", el: $("where") };
+    return null;
   }
-  function show(text, err) { msg.textContent = text; msg.className = "msg" + (err ? " err" : ""); }
+  function show(text, err, fallbackUrl) {
+    msg.textContent = text;
+    msg.className = "msg" + (err ? " err" : "");
+    if (fallbackUrl) {
+      msg.append(" หรือ ");
+      const a = document.createElement("a");
+      a.href = fallbackUrl; a.target = "_blank"; a.rel = "noopener";
+      a.textContent = "ส่งผ่าน GitHub ↗";
+      msg.append(a);
+    }
+  }
   const githubUrl = r => `${SITE.repo}/issues/new?title=${encodeURIComponent(r.title)}&body=${encodeURIComponent(asMarkdown(r))}`;
 
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
-    const bad = check(); if (bad) return show(bad, true);
+    const bad = check();
+    if (bad) {
+      show(bad.text, true);
+      if (bad.el) { bad.el.focus(); bad.el.scrollIntoView({ behavior: "smooth", block: "center" }); }
+      return;
+    }
     const r = report();
     if (!key) {
       window.open(githubUrl(r), "_blank", "noopener");
@@ -93,7 +117,7 @@
       form.reset(); setMode(keepMode);
       show(keepMode === "idea" ? "ส่งแล้ว ขอบคุณสำหรับไอเดียนะ 💚" : "ส่งแล้ว ขอบคุณมาก ๆ ที่ช่วยแจ้งนะ 🙏");
     } catch (err) {
-      show("ส่งไม่สำเร็จ ลองกดส่งอีกครั้งนะ", true);
+      show("ส่งไม่สำเร็จ ลองกดส่งอีกครั้งนะ", true, githubUrl(r));
     } finally {
       sendBtn.disabled = false;
     }
