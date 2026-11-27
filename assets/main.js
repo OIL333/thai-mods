@@ -69,10 +69,13 @@
       }).catch(() => {});
   }
 
-  // QR cards (SITE.donate.qrImages): same-size square QR, colored title bar, account name under it
+  // QR + bank cards (SITE.donate): unified 4-row layout (colored header, square visual, account name, action button)
   document.querySelectorAll("[data-account]").forEach(e => e.textContent = SITE.donate.accountName || "");
   const qrGrid = document.getElementById("qrGrid");
   if (qrGrid) {
+    const icoDl = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4.6-4.6M12 15l4.6-4.6M5 19.5h14"/></svg>';
+    const icoCopy = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+    const icoOk = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 13 4 4L19 7"/></svg>';
     for (const q of SITE.donate.qrImages || []) {
       const fig = document.createElement("figure"); fig.className = "qr-card";
       const head = document.createElement("div"); head.className = "qr-head"; head.style.background = q.color || "var(--accent)";
@@ -82,10 +85,14 @@
       const img = document.createElement("img"); img.src = q.src; img.alt = "QR " + q.label;
       img.width = 600; img.height = 600; img.loading = "lazy";
       const name = document.createElement("figcaption"); name.textContent = SITE.donate.accountName || "";
-      fig.append(head, img, name);
+      const save = document.createElement("a"); save.className = "qr-act";
+      save.style.setProperty("--c", q.color || "var(--accent)");
+      save.href = q.src; save.download = "TripleT-" + q.src.split("/").pop();
+      save.innerHTML = icoDl + "<span>บันทึกรูป QR</span>";
+      fig.append(head, img, name, save);
       qrGrid.append(fig);
     }
-    // bank account card, same size as the QR cards
+    // bank account card, exact same proportions as the QR cards
     const bk = SITE.donate.bank;
     if (bk && bk.number) {
       const fig = document.createElement("figure"); fig.className = "qr-card bank-card";
@@ -97,22 +104,25 @@
       let icon;
       if (bk.logo) {
         icon = document.createElement("img"); icon.className = "bank-logo"; icon.src = bk.logo;
-        icon.alt = bk.label; icon.width = 64; icon.height = 64;
+        icon.alt = bk.label; icon.width = 72; icon.height = 72;
       } else {
         icon = document.createElement("div"); icon.className = "bank-icon"; icon.textContent = "🏦";
       }
       const label = document.createElement("small"); label.textContent = "เลขบัญชี";
       const no = document.createElement("div"); no.className = "bank-no"; no.textContent = bk.number;
-      const btn = document.createElement("button"); btn.type = "button"; btn.className = "bank-copy"; btn.textContent = "📋 คัดลอกเลขบัญชี";
+      body.append(icon, label, no);
+      const name = document.createElement("figcaption"); name.textContent = SITE.donate.accountName || "";
+      const btn = document.createElement("button"); btn.type = "button"; btn.className = "qr-act";
+      btn.style.setProperty("--c", bk.color || "#00a650");
+      btn.innerHTML = icoCopy + "<span>คัดลอกเลขบัญชี</span>";
       btn.onclick = () => {
         const digits = bk.number.replace(/\D/g, "");
         (navigator.clipboard ? navigator.clipboard.writeText(digits) : Promise.reject()).then(() => {
-          btn.textContent = "✓ คัดลอกแล้ว"; setTimeout(() => { btn.textContent = "📋 คัดลอกเลขบัญชี"; }, 1600);
+          btn.innerHTML = icoOk + "<span>คัดลอกแล้ว</span>";
+          setTimeout(() => { btn.innerHTML = icoCopy + "<span>คัดลอกเลขบัญชี</span>"; }, 1600);
         }).catch(() => { btn.textContent = digits; });
       };
-      body.append(icon, label, no, btn);
-      const name = document.createElement("figcaption"); name.textContent = SITE.donate.accountName || "";
-      fig.append(head, body, name);
+      fig.append(head, body, name, btn);
       qrGrid.append(fig);
     }
   }
